@@ -1,9 +1,13 @@
-# 👤 About Me
+# 👨‍💼 About Me
 
 I am an aspiring Data Analyst with a background in operations and administration.
 
-My experience helped me develop structured thinking, attention to detail, and understanding of business processes.
+I have hands-on experience analyzing supply chain data to identify inefficiencies and improve business performance.
 
-I have completed data analytics training and built projects involving data cleaning, exploratory analysis, KPI measurement, and dashboard development.
+I am particularly interested in:
 
-I am currently focused on applying my skills in SQL, Tableau, and business analysis to solve real-world problems.
+* Supply Chain Analytics
+* Operational Efficiency
+* Business Intelligence
+
+📫 Open to entry-level Data Analyst opportunities
