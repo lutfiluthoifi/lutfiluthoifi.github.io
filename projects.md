@@ -1,6 +1,12 @@
 # 📊 Projects
 
 ## 🚚 Reducing Delivery Delays in Supply Chain Operations
+### 📊 Key Metrics
+
+* Late Delivery Rate: **57.3%**
+* Highest Risk Segment: **Standard Class**
+* Estimated Loss Exposure: **~$914K**
+
 
 ### 📌 Business Problem
 
