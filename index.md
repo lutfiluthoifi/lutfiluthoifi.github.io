@@ -1,10 +1,22 @@
 # 👋 Hi, I'm Lutfi
 
-Aspiring Data Analyst with a background in operations and administration, bringing a strong understanding of business processes and data-driven decision making.
+🎯 Aspiring Data Analyst | Turning Data into Business Insights
+
+I analyze operational data to identify inefficiencies, reduce risks, and improve decision-making.
+
+---
+
+## 🚀 Key Achievement
+
+* Identified **57.3% late deliveries** in supply chain operations
+* Estimated **$914K financial risk exposure**
+* Proposed solutions to reduce delays by **≥10% within 6 months**
 
 ---
 
 ## 📊 Featured Project
+
+![Dashboard Preview](https://public.tableau.com/static/images/DE/DEEPP1_17699608370300/Dashboard1/1.png)
 
 ### 🚚 Reducing Delivery Delays in Supply Chain Operations
 
@@ -31,6 +43,9 @@ Analyzed 100K+ supply chain records to identify key drivers of delivery delays a
 * Business Analysis
 
 ---
+## 📫 Contact
+- LinkedIn: www.linkedin.com/in/lutfiluthoifi
+- Email: lutfiluthoifi16@gmail.com
 
 ## 📍 Navigation
 
