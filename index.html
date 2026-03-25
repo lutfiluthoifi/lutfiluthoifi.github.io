@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lutfi Luthoifi — Data Portfolio</title>
+
+  <!-- ICON LIBRARY -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .about {
+      margin-top: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .links {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .links a i {
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .links a:hover {
+      background: #f5f5f5;
+      transform: translateY(-2px);
+    }
+
+    .links a:hover i {
+      transform: scale(1.2);
+    }
+
+    .project {
+      margin-top: 60px;
+      border-top: 1px solid #eee;
+      padding-top: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+    }
+
+    .project-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .project-preview {
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .project-content {
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 10px;
+      background: #fafafa;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .highlight {
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+      <h1>Lutfi Luthoifi</h1>
+    </div>
+
+    <p class="about">
+      I am an aspiring Data Analyst with a strong interest in transforming data into meaningful business insights. With previous experience in administrative and operational roles, I developed strong attention to detail, structured thinking, and an understanding of how data supports business processes. To strengthen my analytical capabilities, I completed hands-on data analytics training, which included end-to-end analysis projects. Through these projects, I identified on-time performance gaps, measured financial impact, and translated findings into actionable recommendations. Through this experience, I developed skills in data cleaning, exploratory data analysis (EDA), KPI measurement, and dashboard development using Excel, SQL, Python, and Tableau, and I am ready to apply these skills to deliver reliable, data-driven solutions in a Data Analyst role.
+    </p>
+
+    <div class="links">
+      <a href="mailto:lutfiluthoifi16@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="tel:+6281273249943"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+    </div>
+
+    <h2 style="margin-top:60px; font-size:18px; color:#888; letter-spacing:1px;">SELECTED PROJECTS</h2>
+
+    <!-- PROJECT 1 -->
+    <div class="project" onclick="toggleProject1()">
+      <div class="project-title">Reducing Delivery Delays in Supply Chain Operations</div>
+      <div class="project-preview">57.3% late delivery rate — click to view case study</div>
+
+      <div id="projectContent1" class="project-content">
+        <p class="highlight">Impact: Reduced delivery delay risk by identifying SLA mismatch (~$914K impact)</p>
+        <p><span class="highlight">Problem:</span><br>
+        Over <span class="highlight">57.3% of deliveries are late</span>, indicating a major inefficiency.</p>
+
+        <p><span class="highlight">Key Insight:</span><br>
+        Misalignment between SLA targets and operational capacity.</p>
+
+        <p><span class="highlight">Business Impact:</span></p>
+        <ul>
+          <li>High SLA failure risk</li>
+          <li>Customer dissatisfaction</li>
+          <li><span class="highlight">~$914K profit at risk</span></li>
+        </ul>
+
+        <p><span class="highlight">Recommendation:</span></p>
+        <ul>
+          <li>Redesign SLA</li>
+          <li>Align capacity</li>
+          <li>Improve monitoring</li>
+        </ul>
+
+        <p>
+          <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank">View Dashboard</a><br>
+          <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit" target="_blank">View Presentation</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project" onclick="toggleProject2()">
+      <div class="project-title">Sales Performance Analysis</div>
+      <div class="project-preview">Identifying underperforming regions — click to view</div>
+
+      <div id="projectContent2" class="project-content">
+        <p class="highlight">Impact: Identified underperforming regions to improve revenue opportunity</p>
+        <p><span class="highlight">Problem:</span><br>
+        Sales performance varies significantly across regions.</p>
+
+        <p><span class="highlight">Key Insight:</span><br>
+        Certain regions consistently underperform compared to average.</p>
+
+        <p><span class="highlight">Business Impact:</span></p>
+        <ul>
+          <li>Missed revenue opportunities</li>
+          <li>Uneven market penetration</li>
+        </ul>
+
+        <p><span class="highlight">Recommendation:</span></p>
+        <ul>
+          <li>Focus on high-potential regions</li>
+          <li>Adjust regional strategy</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project" onclick="toggleProject3()">
+      <div class="project-title">Customer Segmentation Analysis</div>
+      <div class="project-preview">Understanding high-value customers — click to view</div>
+
+      <div id="projectContent3" class="project-content">
+        <p class="highlight">Impact: Revealed high-value customer segments to optimize retention strategy</p>
+        <p><span class="highlight">Problem:</span><br>
+        Lack of visibility into customer value distribution.</p>
+
+        <p><span class="highlight">Key Insight:</span><br>
+        A small group of customers contributes most revenue.</p>
+
+        <p><span class="highlight">Business Impact:</span></p>
+        <ul>
+          <li>Inefficient marketing allocation</li>
+          <li>Missed retention opportunities</li>
+        </ul>
+
+        <p><span class="highlight">Recommendation:</span></p>
+        <ul>
+          <li>Implement targeted campaigns</li>
+          <li>Improve retention strategy</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleProject1() {
+      var content = document.getElementById('projectContent1');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleProject2() {
+      var content = document.getElementById('projectContent2');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleProject3() {
+      var content = document.getElementById('projectContent3');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>
