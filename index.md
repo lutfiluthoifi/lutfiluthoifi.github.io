@@ -44,8 +44,8 @@ Analyzed 100K+ supply chain records to identify key drivers of delivery delays a
 
 ---
 ## 📫 Contact
-- LinkedIn: www.linkedin.com/in/lutfiluthoifi
-- Email: lutfiluthoifi16@gmail.com
+- LinkedIn: "www.linkedin.com/in/lutfiluthoifi"
+- Email: "lutfiluthoifi16@gmail.com"
 
 ## 📍 Navigation
 
