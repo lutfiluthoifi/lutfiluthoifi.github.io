@@ -1,204 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Lutfi Luthoifi | Data Analyst Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lutfi Luthoifi — Data Portfolio</title>
 
-<!-- FONT + ICON -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
-  margin: 0;
-  padding: 0;
-}
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+    }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
-h1 {
-  font-size: 36px;
-  margin-bottom: 5px;
-}
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-h2 {
-  margin-top: 40px;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 5px;
-  color: #38bdf8;
-}
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+    }
 
-p {
-  line-height: 1.6;
-}
+    h1 {
+      font-size: 32px;
+      margin: 0;
+    }
 
-.links a {
-  display: inline-block;
-  margin-right: 15px;
-  color: #38bdf8;
-  text-decoration: none;
-}
+    h2 {
+      margin-top: 60px;
+      font-size: 18px;
+      color: #888;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
 
-.project {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-  transition: 0.3s;
-}
+    .about {
+      margin-top: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
 
-.project:hover {
-  transform: translateY(-3px);
-}
+    .links {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-.project-title {
-  font-weight: 600;
-  cursor: pointer;
-}
+    .links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
 
-.project-preview {
-  font-size: 14px;
-  color: #94a3b8;
-}
+    .links a:hover {
+      background: #f5f5f5;
+      transform: translateY(-2px);
+    }
 
-.project-content {
-  display: none;
-  margin-top: 10px;
-}
+    .project {
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
 
-.highlight {
-  color: #22c55e;
-  font-weight: 600;
-}
+    .project-title {
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-ul {
-  padding-left: 20px;
-}
-</style>
+    .project-title:hover {
+      text-decoration: underline;
+    }
 
-<script>
-function toggle(id) {
-  const el = document.getElementById("p" + id);
-  el.style.display = el.style.display === "block" ? "none" : "block";
-}
-</script>
+    .project-preview {
+      color: #666;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .project-content {
+      display: none;
+      margin-top: 15px;
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 10px;
+      background: #fafafa;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0077cc;
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
 
-<!-- HEADER -->
-<h1>Lutfi Luthoifi</h1>
-<p>Aspiring Data Analyst | Turning Data into Business Insights</p>
+    <!-- HEADER -->
+    <div class="header">
+      <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
+      <h1>Lutfi Luthoifi</h1>
+    </div>
 
-<!-- LINKS -->
-<div class="links">
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com" target="_blank">
-    <i class="fa-solid fa-envelope"></i> Email
-  </a>
-  <a href="https://www.linkedin.com/" target="_blank">
-    <i class="fa-brands fa-linkedin"></i> LinkedIn
-  </a>
-  <a href="https://github.com/" target="_blank">
-    <i class="fa-brands fa-github"></i> GitHub
-  </a>
-</div>
+    <!-- ABOUT -->
+    <p class="about">
+      Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to uncover risks, improve performance, and drive business impact.
+    </p>
 
-<!-- ABOUT -->
-<h2>ABOUT</h2>
-<p>
-Aspiring Data Analyst with hands-on experience in transforming raw data into actionable business insights. 
-Skilled in Python, SQL, and Tableau with a strong focus on identifying performance gaps and delivering data-driven recommendations.
-</p>
+    <!-- LINKS -->
+    <div class="links">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+      <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank">
+        <i class="fa-solid fa-file-arrow-down"></i> Download CV
+      </a>
+    </div>
 
-<!-- PROJECTS -->
-<h2>PROJECTS</h2>
+    <!-- PROJECTS -->
+    <h2>PROJECTS</h2>
 
-<!-- PROJECT 1 -->
-<div class="project">
-  <div class="project-title" onclick="toggle(1)">Logistics Performance Analysis</div>
-  <div class="project-preview">Identified delivery delays impacting operations — click</div>
+    <div class="project">
+      <div class="project-title" onclick="toggle(1)">Delivery Delay Risk Analysis</div>
+      <div class="project-preview">57.3% late delivery rate — click</div>
 
-  <div id="p1" class="project-content">
-    <p class="highlight">Impact: Identified delays affecting operational efficiency</p>
+      <div id="p1" class="project-content">
+        <p class="highlight">Impact: ~$914K profit at risk identified</p>
+        <p><span class="highlight">Problem:</span> High late delivery rate</p>
+        <p><span class="highlight">Insight:</span> SLA mismatch</p>
+        <p><span class="highlight">Tools:</span> Python, Tableau, Google Slides</p>
 
-    <p><span class="highlight">Problem:</span> High percentage of late deliveries impacting service quality</p>
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank">
+          View Dashboard
+        </a>
+        <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit?slide=id.g4dfce81f19_0_45#slide=id.g4dfce81f19_0_45" target="_blank">
+          View Slide Presentation
+        </a>
+      </div>
+    </div>
 
-    <p><span class="highlight">Key Insight:</span> Late deliveries concentrated in specific regions and routes</p>
-
-    <p><span class="highlight">Business Impact:</span></p>
-    <ul>
-      <li>Reduced customer satisfaction</li>
-      <li>Increased operational costs</li>
-    </ul>
-
-    <p><span class="highlight">Recommendation:</span></p>
-    <ul>
-      <li>Optimize route planning</li>
-      <li>Improve scheduling accuracy</li>
-    </ul>
-
-    <p><span class="highlight">Tools:</span> Excel, Tableau</p>
-  </div>
-</div>
-
-<!-- PROJECT 2 (YOUR SUPERSTORE) -->
-<div class="project">
+    <div class="project">
   <div class="project-title" onclick="toggle(2)">Superstore Profitability Analysis</div>
-  <div class="project-preview">Analyzed 9,000+ transactions to uncover profit leakage — click</div>
+  <div class="project-preview">Identified profit leakage despite strong sales — click</div>
 
   <div id="p2" class="project-content">
     <p class="highlight">Impact: Identified major profit leakage in Furniture category</p>
 
-    <p><span class="highlight">Dashboard:</span>
-      <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/SuperStore_17751203732730/Dashboard1" target="_blank">
-        View Tableau Dashboard
-      </a>
-    </p>
+    <p><span class="highlight">Problem:</span> Business shows strong sales but relatively low profit margin (~12%)</p>
 
-    <p><span class="highlight">Problem:</span> Strong sales performance but low overall profit margin (~12%)</p>
-
-    <p><span class="highlight">Key Insight:</span> Tables sub-category generates high revenue but negative profit</p>
+    <p><span class="highlight">Key Insight:</span> Tables sub-category generates high sales but consistently negative profit</p>
 
     <p><span class="highlight">Deep Insight:</span> Profit turns negative when discount exceeds ~20%</p>
 
     <p><span class="highlight">Business Impact:</span></p>
     <ul>
-      <li>Revenue growth masking hidden losses</li>
+      <li>Hidden losses despite revenue growth</li>
       <li>Profit erosion driven by discount strategy</li>
     </ul>
 
     <p><span class="highlight">Recommendation:</span></p>
     <ul>
       <li>Limit discount threshold to ≤20%</li>
-      <li>Reevaluate pricing strategy for Furniture</li>
+      <li>Re-evaluate pricing strategy for Tables</li>
       <li>Focus on high-margin categories (Technology)</li>
     </ul>
 
-    <p><span class="highlight">Tools:</span> Python, Pandas, Tableau</p>
+    <p><span class="highlight">Tools:</span> Python, Pandas, Matplotlib</p>
   </div>
 </div>
 
-<!-- EXPERIENCE -->
-<h2>EXPERIENCE</h2>
-<p><strong>Administrative & Operational Role</strong></p>
-<ul>
-  <li>Managed and organized business data to support operations</li>
-  <li>Improved reporting accuracy and data tracking processes</li>
-</ul>
+    <!-- EXPERIENCE -->
+    <h2>EXPERIENCE</h2>
 
-<!-- EDUCATION -->
-<h2>EDUCATION</h2>
-<p>Data Analytics Training (Project-Based Learning)</p>
+    <div class="project">
+      <div class="project-title">Admin Staff — Partai Ummat</div>
+      <div class="project-preview">May 2022 – Jul 2023</div>
+      <div class="project-content" style="display:block;">
+        <ul>
+          <li>Managed compliance documentation across 3 provinces</li>
+          <li>Improved administrative tracking system</li>
+          <li>Coordinated cross-regional teams</li>
+        </ul>
+      </div>
+    </div>
 
-</div>
+    <div class="project">
+      <div class="project-title">Management Trainee — PT Securindo Packatama Indonesia</div>
+      <div class="project-preview">May 2019 – Dec 2019</div>
+      <div class="project-content" style="display:block;">
+        <ul>
+          <li>Maintained database accuracy and validated records</li>
+          <li>Supported reporting and issue resolution</li>
+          <li>Handled scheduling for 200+ staff</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <h2>EDUCATION</h2>
+
+    <div class="project">
+      <div class="project-title">RevoU — Full Stack Data Analytics</div>
+      <div class="project-preview">Oct 2025 – Feb 2026</div>
+      <div class="project-content" style="display:block;">
+        <p>Hands-on data analytics training using SQL, Python, and Tableau.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Trisakti Institute of Transportation and Logistics</div>
+      <div class="project-preview">Bachelor Degree (GPA: 3.18)</div>
+      <div class="project-content" style="display:block;">
+        <p>2013 – 2018</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById("p" + id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
 </body>
 </html>
