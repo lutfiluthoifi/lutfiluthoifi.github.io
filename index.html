@@ -1,263 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lutfi Luthoifi — Data Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lutfi Luthoifi — Data Analyst Portfolio</title>
 
-  <!-- ICON LIBRARY -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      margin: 0;
-      background: #ffffff;
-      color: #111;
-    }
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #111;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-      animation: fadeIn 1s ease;
-    }
+/* NAVBAR */
+.nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #eee;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.nav a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 20px;
+  font-size: 14px;
+}
 
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
 
-    .profile-img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #eee;
-    }
+/* HERO */
+.hero h1 {
+  font-size: 36px;
+  margin: 0;
+}
 
-    h1 {
-      font-size: 32px;
-      margin: 0;
-    }
+.hero p {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.6;
+}
 
-    .about {
-      margin-top: 15px;
-      color: #444;
-      line-height: 1.6;
-    }
+/* METRICS */
+.metrics {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
 
-    .links {
-      margin-top: 20px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.metric {
+  flex: 1;
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 12px;
+}
 
-    .links a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: #333;
-      font-size: 14px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: all 0.25s ease;
-    }
+.metric h2 {
+  margin: 0;
+  font-size: 24px;
+}
 
-    .links a i {
-      font-size: 16px;
-      transition: transform 0.2s ease;
-    }
+.metric p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #777;
+}
 
-    .links a:hover {
-      background: #f5f5f5;
-      transform: translateY(-2px);
-    }
+/* LINKS */
+.links {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
-    .links a:hover i {
-      transform: scale(1.2);
-    }
+.links a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #eee;
+}
 
-    .project {
-      margin-top: 60px;
-      border-top: 1px solid #eee;
-      padding-top: 30px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+/* SECTION */
+.section {
+  margin-top: 70px;
+}
 
-    .project:hover {
-      transform: translateY(-3px);
-    }
+.section h3 {
+  font-size: 14px;
+  color: #888;
+  letter-spacing: 1px;
+}
 
-    .project-title {
-      font-size: 22px;
-      font-weight: 600;
-    }
+/* PROJECT CARD */
+.card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  transition: 0.2s;
+}
 
-    .project-preview {
-      color: #666;
-      margin-top: 5px;
-    }
+.card:hover {
+  transform: translateY(-4px);
+}
 
-    .project-content {
-      display: none;
-      margin-top: 20px;
-      border: 1px solid #eee;
-      padding: 20px;
-      border-radius: 10px;
-      background: #fafafa;
-      animation: fadeIn 0.4s ease;
-    }
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 15px;
+}
 
-    .highlight {
-      font-weight: bold;
-    }
+.small {
+  color: #666;
+  font-size: 14px;
+}
 
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+.highlight {
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <div class="header">
-      <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
-      <h1>Lutfi Luthoifi</h1>
-    </div>
-
-    <p class="about">
-      I am an aspiring Data Analyst with a strong interest in transforming data into meaningful business insights. With previous experience in administrative and operational roles, I developed strong attention to detail, structured thinking, and an understanding of how data supports business processes. To strengthen my analytical capabilities, I completed hands-on data analytics training, which included end-to-end analysis projects. Through these projects, I identified on-time performance gaps, measured financial impact, and translated findings into actionable recommendations. Through this experience, I developed skills in data cleaning, exploratory data analysis (EDA), KPI measurement, and dashboard development using Excel, SQL, Python, and Tableau, and I am ready to apply these skills to deliver reliable, data-driven solutions in a Data Analyst role.
-    </p>
-
-    <div class="links">
-      <a href="mailto:lutfiluthoifi16@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-      <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
-  <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-      <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-      <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
-    </div>
-
-    <h2 style="margin-top:60px; font-size:18px; color:#888; letter-spacing:1px;">SELECTED PROJECTS</h2>
-
-    <!-- PROJECT 1 -->
-    <div class="project" onclick="toggleProject1()">
-      <div class="project-title">Analysis of Delivery Delay Risk and Its Impact on Profitability
+<!-- NAV -->
+<div class="nav">
+  <div><strong>Lutfi</strong></div>
+  <div>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
 </div>
-      <div class="project-preview">57.3% late delivery rate — click to view case study</div>
 
-      <div id="projectContent1" class="project-content">
-        <p class="highlight">Impact: Reduced delivery delay risk by identifying SLA mismatch (~$914K impact)</p>
-        <p><span class="highlight">Problem:</span><br>
-        Over <span class="highlight">57.3% of deliveries are late</span>, indicating a major inefficiency.</p>
+<div class="container">
 
-        <p><span class="highlight">Key Insight:</span><br>
-        Misalignment between SLA targets and operational capacity.</p>
+<!-- HERO -->
+<div class="hero">
+  <h1>Turning Data Into Business Decisions</h1>
+  <p>
+    Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to uncover risks, improve performance, and drive business impact.
+  </p>
 
-        <p><span class="highlight">Business Impact:</span></p>
-        <ul>
-          <li>High SLA failure risk</li>
-          <li>Customer dissatisfaction</li>
-          <li><span class="highlight">~$914K profit at risk</span></li>
-        </ul>
-
-        <p><span class="highlight">Recommendation:</span></p>
-        <ul>
-          <li>Redesign SLA</li>
-          <li>Align capacity</li>
-          <li>Improve monitoring</li>
-        </ul>
-
-        <p>
-          <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank">View Dashboard</a><br>
-          <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit" target="_blank">View Presentation</a>
-        </p>
-      </div>
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric">
+      <h2>57.3%</h2>
+      <p>Late Delivery Rate Identified</p>
     </div>
-
-    <!-- PROJECT 2 -->
-    <div class="project" onclick="toggleProject2()">
-      <div class="project-title">Sales Performance Analysis</div>
-      <div class="project-preview">Identifying underperforming regions — click to view</div>
-
-      <div id="projectContent2" class="project-content">
-        <p class="highlight">Impact: Identified underperforming regions to improve revenue opportunity</p>
-        <p><span class="highlight">Problem:</span><br>
-        Sales performance varies significantly across regions.</p>
-
-        <p><span class="highlight">Key Insight:</span><br>
-        Certain regions consistently underperform compared to average.</p>
-
-        <p><span class="highlight">Business Impact:</span></p>
-        <ul>
-          <li>Missed revenue opportunities</li>
-          <li>Uneven market penetration</li>
-        </ul>
-
-        <p><span class="highlight">Recommendation:</span></p>
-        <ul>
-          <li>Focus on high-potential regions</li>
-          <li>Adjust regional strategy</li>
-        </ul>
-      </div>
+    <div class="metric">
+      <h2>$914K</h2>
+      <p>Profit at Risk Analyzed</p>
     </div>
-
-    <!-- PROJECT 3 -->
-    <div class="project" onclick="toggleProject3()">
-      <div class="project-title">Customer Segmentation Analysis</div>
-      <div class="project-preview">Understanding high-value customers — click to view</div>
-
-      <div id="projectContent3" class="project-content">
-        <p class="highlight">Impact: Revealed high-value customer segments to optimize retention strategy</p>
-        <p><span class="highlight">Problem:</span><br>
-        Lack of visibility into customer value distribution.</p>
-
-        <p><span class="highlight">Key Insight:</span><br>
-        A small group of customers contributes most revenue.</p>
-
-        <p><span class="highlight">Business Impact:</span></p>
-        <ul>
-          <li>Inefficient marketing allocation</li>
-          <li>Missed retention opportunities</li>
-        </ul>
-
-        <p><span class="highlight">Recommendation:</span></p>
-        <ul>
-          <li>Implement targeted campaigns</li>
-          <li>Improve retention strategy</li>
-        </ul>
-      </div>
+    <div class="metric">
+      <h2>108K+</h2>
+      <p>Records Analyzed</p>
     </div>
-
   </div>
 
-  <script>
-    function toggleProject1() {
-      var content = document.getElementById('projectContent1');
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    }
+  <!-- LINKS -->
+  <div class="links">
+    <a href="mailto:lutfiluthoifi16@gmail.com?subject=Portfolio%20Inquiry" target="_blank">Email</a>
+    <a href="https://wa.me/6281273249943" target="_blank">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank">LinkedIn</a>
+    <a href="YOUR_CV_LINK" target="_blank">Download CV</a>
+  </div>
+</div>
 
-    function toggleProject2() {
-      var content = document.getElementById('projectContent2');
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    }
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <h3>PROJECTS</h3>
 
-    function toggleProject3() {
-      var content = document.getElementById('projectContent3');
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
+  <div class="card">
+    <h2>Delivery Delay Risk Analysis</h2>
+    <p class="small">Identified major inefficiency in supply chain performance</p>
+
+    <p><span class="highlight">Impact:</span> ~$914K profit at risk</p>
+    <p><span class="highlight">Tools:</span> SQL, Python, Tableau</p>
+
+    <!-- REPLACE IMAGE -->
+    <img src="dashboard1.png">
+
+    <a href="YOUR_TABLEAU_LINK" target="_blank">View Dashboard</a>
+  </div>
+
+  <div class="card">
+    <h2>Sales Performance Analysis</h2>
+    <p class="small">Analyzed regional performance gaps</p>
+
+    <p><span class="highlight">Impact:</span> Identified underperforming regions</p>
+    <p><span class="highlight">Tools:</span> Excel, Tableau</p>
+  </div>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <h3>EXPERIENCE</h3>
+
+  <div class="card">
+    <h2>Admin Staff — Partai Ummat</h2>
+    <p class="small">2022 – 2023</p>
+
+    <ul>
+      <li>Managed documentation across 3 provinces</li>
+      <li>Improved tracking system</li>
+      <li>Coordinated regional teams</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Management Trainee — PT Securindo Packatama Indonesia</h2>
+    <p class="small">2019</p>
+
+    <ul>
+      <li>Maintained database accuracy</li>
+      <li>Handled reporting and operations</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- EDUCATION -->
+<div class="section" id="education">
+  <h3>EDUCATION</h3>
+
+  <div class="card">
+    <h2>RevoU</h2>
+    <p class="small">Full Stack Data Analytics (2025–2026)</p>
+  </div>
+
+  <div class="card">
+    <h2>Trisakti Institute</h2>
+    <p class="small">Bachelor Degree (GPA 3.18)</p>
+  </div>
+
+</div>
+
+</div>
 
 </body>
 </html>
