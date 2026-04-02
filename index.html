@@ -1,258 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lutfi Luthoifi — Data Analyst Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lutfi Luthoifi — Data Portfolio</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  margin: 0;
-  background: #fff;
-  color: #111;
-}
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+    }
 
-/* NAVBAR */
-.nav {
-  position: sticky;
-  top: 0;
-  background: white;
-  border-bottom: 1px solid #eee;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 100;
-}
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      animation: fadeIn 0.8s ease;
+    }
 
-.nav a {
-  text-decoration: none;
-  color: #333;
-  margin-left: 20px;
-  font-size: 14px;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-/* CONTAINER */
-.container {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-/* HERO */
-.hero h1 {
-  font-size: 36px;
-  margin: 0;
-}
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eee;
+    }
 
-.hero p {
-  margin-top: 10px;
-  color: #555;
-  line-height: 1.6;
-}
+    h1 {
+      font-size: 32px;
+      margin: 0;
+    }
 
-/* METRICS */
-.metrics {
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-}
+    h2 {
+      margin-top: 60px;
+      font-size: 18px;
+      color: #888;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
 
-.metric {
-  flex: 1;
-  border: 1px solid #eee;
-  padding: 20px;
-  border-radius: 12px;
-}
+    .about {
+      margin-top: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
 
-.metric h2 {
-  margin: 0;
-  font-size: 24px;
-}
+    .links {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-.metric p {
-  margin: 5px 0 0;
-  font-size: 13px;
-  color: #777;
-}
+    .links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
 
-/* LINKS */
-.links {
-  margin-top: 25px;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
+    .links a:hover {
+      background: #f5f5f5;
+      transform: translateY(-2px);
+    }
 
-.links a {
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
-  border: 1px solid #eee;
-}
+    .project {
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
 
-/* SECTION */
-.section {
-  margin-top: 70px;
-}
+    .project:hover {
+      transform: translateY(-3px);
+    }
 
-.section h3 {
-  font-size: 14px;
-  color: #888;
-  letter-spacing: 1px;
-}
+    .project-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
 
-/* PROJECT CARD */
-.card {
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
-  transition: 0.2s;
-}
+    .project-preview {
+      color: #666;
+      margin-top: 5px;
+      font-size: 14px;
+    }
 
-.card:hover {
-  transform: translateY(-4px);
-}
+    .project-content {
+      display: none;
+      margin-top: 15px;
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 10px;
+      background: #fafafa;
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
-.card img {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 15px;
-}
+    .highlight {
+      font-weight: bold;
+    }
 
-.small {
-  color: #666;
-  font-size: 14px;
-}
+    ul {
+      padding-left: 20px;
+    }
 
-.highlight {
-  font-weight: bold;
-}
-</style>
+    a {
+      color: #0077cc;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
 
-<!-- NAV -->
-<div class="nav">
-  <div><strong>Lutfi</strong></div>
-  <div>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-  </div>
-</div>
-
-<div class="container">
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Turning Data Into Business Decisions</h1>
-  <p>
-    Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to uncover risks, improve performance, and drive business impact.
-  </p>
-
-  <!-- METRICS -->
-  <div class="metrics">
-    <div class="metric">
-      <h2>57.3%</h2>
-      <p>Late Delivery Rate Identified</p>
+    <!-- HEADER -->
+    <div class="header">
+      <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
+      <h1>Lutfi Luthoifi</h1>
     </div>
-    <div class="metric">
-      <h2>$914K</h2>
-      <p>Profit at Risk Analyzed</p>
+
+    <!-- ABOUT -->
+    <p class="about">
+      Aspiring Data Analyst with hands-on experience in transforming data into actionable business insights. Skilled in SQL, Python, and Tableau to analyze performance, identify risks, and deliver data-driven recommendations.
+    </p>
+
+    <!-- LINKS -->
+    <div class="links">
+      <a href="mailto:lutfiluthoifi16@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+      <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank">
+        <i class="fa-solid fa-file-arrow-down"></i> Download CV
+      </a>
     </div>
-    <div class="metric">
-      <h2>108K+</h2>
-      <p>Records Analyzed</p>
+
+    <!-- EXPERIENCE -->
+    <h2>EXPERIENCE</h2>
+
+    <div class="project">
+      <div class="project-title">Admin Staff — Partai Ummat</div>
+      <div class="project-preview">May 2022 – Jul 2023</div>
+      <div class="project-content" style="display:block;">
+        <ul>
+          <li>Managed compliance documentation across 3 provinces</li>
+          <li>Improved administrative tracking system</li>
+          <li>Coordinated cross-regional teams</li>
+        </ul>
+      </div>
     </div>
+
+    <div class="project">
+      <div class="project-title">Management Trainee — PT Securindo Packatama Indonesia</div>
+      <div class="project-preview">May 2019 – Dec 2019</div>
+      <div class="project-content" style="display:block;">
+        <ul>
+          <li>Maintained database accuracy and validated records</li>
+          <li>Supported reporting and issue resolution</li>
+          <li>Handled scheduling for 200+ staff</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <h2>EDUCATION</h2>
+
+    <div class="project">
+      <div class="project-title">RevoU — Full Stack Data Analytics</div>
+      <div class="project-preview">Oct 2025 – Feb 2026</div>
+      <div class="project-content" style="display:block;">
+        <p>Hands-on data analytics training using SQL, Python, and Tableau.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Trisakti Institute</div>
+      <div class="project-preview">Bachelor Degree (GPA: 3.18)</div>
+      <div class="project-content" style="display:block;">
+        <p>2013 – 2018</p>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <h2>PROJECTS</h2>
+
+    <div class="project" onclick="toggle(1)">
+      <div class="project-title">Delivery Delay Risk Analysis</div>
+      <div class="project-preview">57.3% late delivery rate — click</div>
+
+      <div id="p1" class="project-content">
+        <p class="highlight">Impact: ~$914K profit at risk identified</p>
+
+        <p><span class="highlight">Problem:</span> High late delivery rate</p>
+        <p><span class="highlight">Insight:</span> SLA mismatch</p>
+
+        <p><span class="highlight">Tools:</span> SQL, Python, Tableau</p>
+
+        <a href="https://public.tableau.com/" target="_blank">View Dashboard</a>
+      </div>
+    </div>
+
+    <div class="project" onclick="toggle(2)">
+      <div class="project-title">Sales Performance Analysis</div>
+      <div class="project-preview">Underperforming regions</div>
+
+      <div id="p2" class="project-content">
+        <p class="highlight">Impact: Identified revenue gaps</p>
+        <p><span class="highlight">Tools:</span> Excel, Tableau</p>
+      </div>
+    </div>
+
+    <div class="project" onclick="toggle(3)">
+      <div class="project-title">Customer Segmentation</div>
+      <div class="project-preview">High-value customers</div>
+
+      <div id="p3" class="project-content">
+        <p class="highlight">Impact: Improved targeting strategy</p>
+        <p><span class="highlight">Tools:</span> Python, SQL</p>
+      </div>
+    </div>
+
   </div>
 
-  <!-- LINKS -->
-  <div class="links">
-    <a href="mailto:lutfiluthoifi16@gmail.com?subject=Portfolio%20Inquiry" target="_blank">Email</a>
-    <a href="https://wa.me/6281273249943" target="_blank">WhatsApp</a>
-    <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank">LinkedIn</a>
-    <a href="YOUR_CV_LINK" target="_blank">Download CV</a>
-  </div>
-</div>
-
-<!-- PROJECTS -->
-<div class="section" id="projects">
-  <h3>PROJECTS</h3>
-
-  <div class="card">
-    <h2>Delivery Delay Risk Analysis</h2>
-    <p class="small">Identified major inefficiency in supply chain performance</p>
-
-    <p><span class="highlight">Impact:</span> ~$914K profit at risk</p>
-    <p><span class="highlight">Tools:</span> SQL, Python, Tableau</p>
-
-    <!-- REPLACE IMAGE -->
-    <img src="dashboard1.png">
-
-    <a href="YOUR_TABLEAU_LINK" target="_blank">View Dashboard</a>
-  </div>
-
-  <div class="card">
-    <h2>Sales Performance Analysis</h2>
-    <p class="small">Analyzed regional performance gaps</p>
-
-    <p><span class="highlight">Impact:</span> Identified underperforming regions</p>
-    <p><span class="highlight">Tools:</span> Excel, Tableau</p>
-  </div>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section" id="experience">
-  <h3>EXPERIENCE</h3>
-
-  <div class="card">
-    <h2>Admin Staff — Partai Ummat</h2>
-    <p class="small">2022 – 2023</p>
-
-    <ul>
-      <li>Managed documentation across 3 provinces</li>
-      <li>Improved tracking system</li>
-      <li>Coordinated regional teams</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Management Trainee — PT Securindo Packatama Indonesia</h2>
-    <p class="small">2019</p>
-
-    <ul>
-      <li>Maintained database accuracy</li>
-      <li>Handled reporting and operations</li>
-    </ul>
-  </div>
-
-</div>
-
-<!-- EDUCATION -->
-<div class="section" id="education">
-  <h3>EDUCATION</h3>
-
-  <div class="card">
-    <h2>RevoU</h2>
-    <p class="small">Full Stack Data Analytics (2025–2026)</p>
-  </div>
-
-  <div class="card">
-    <h2>Trisakti Institute</h2>
-    <p class="small">Bachelor Degree (GPA 3.18)</p>
-  </div>
-
-</div>
-
-</div>
+  <script>
+    function toggle(id) {
+      const el = document.getElementById("p" + id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
