@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lutfi Luthoifi — Data Portfolio</title>
 
-  <!-- ICON -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -20,12 +19,6 @@
       max-width: 900px;
       margin: 60px auto;
       padding: 0 20px;
-      animation: fadeIn 0.8s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .header {
@@ -89,17 +82,16 @@
       margin-top: 30px;
       border-top: 1px solid #eee;
       padding-top: 20px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-3px);
     }
 
     .project-title {
       font-size: 18px;
       font-weight: 600;
+      cursor: pointer;
+    }
+
+    .project-title:hover {
+      text-decoration: underline;
     }
 
     .project-preview {
@@ -144,12 +136,12 @@
 
     <!-- ABOUT -->
     <p class="about">
-      Aspiring Data Analyst with hands-on experience in transforming data into actionable business insights. Skilled in SQL, Python, and Tableau to analyze performance, identify risks, and deliver data-driven recommendations.
+      Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to uncover risks, improve performance, and drive business impact.
     </p>
 
     <!-- LINKS -->
     <div class="links">
-      <a href="mailto:lutfiluthoifi16@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
         <i class="fa-solid fa-envelope"></i> Email
       </a>
       <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank">
@@ -161,6 +153,45 @@
       <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank">
         <i class="fa-solid fa-file-arrow-down"></i> Download CV
       </a>
+    </div>
+
+    <!-- PROJECTS -->
+    <h2>PROJECTS</h2>
+
+    <div class="project">
+      <div class="project-title" onclick="toggle(1)">Delivery Delay Risk Analysis</div>
+      <div class="project-preview">57.3% late delivery rate — click</div>
+
+      <div id="p1" class="project-content">
+        <p class="highlight">Impact: ~$914K profit at risk identified</p>
+        <p><span class="highlight">Problem:</span> High late delivery rate</p>
+        <p><span class="highlight">Insight:</span> SLA mismatch</p>
+        <p><span class="highlight">Tools:</span> SQL, Python, Tableau</p>
+
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank">
+          View Dashboard
+        </a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title" onclick="toggle(2)">Sales Performance Analysis</div>
+      <div class="project-preview">Underperforming regions</div>
+
+      <div id="p2" class="project-content">
+        <p class="highlight">Impact: Identified revenue gaps</p>
+        <p><span class="highlight">Tools:</span> Excel, Tableau</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title" onclick="toggle(3)">Customer Segmentation</div>
+      <div class="project-preview">High-value customers</div>
+
+      <div id="p3" class="project-content">
+        <p class="highlight">Impact: Improved targeting strategy</p>
+        <p><span class="highlight">Tools:</span> Python, SQL</p>
+      </div>
     </div>
 
     <!-- EXPERIENCE -->
@@ -206,45 +237,6 @@
       <div class="project-preview">Bachelor Degree (GPA: 3.18)</div>
       <div class="project-content" style="display:block;">
         <p>2013 – 2018</p>
-      </div>
-    </div>
-
-    <!-- PROJECTS -->
-    <h2>PROJECTS</h2>
-
-    <div class="project" onclick="toggle(1)">
-      <div class="project-title">Delivery Delay Risk Analysis</div>
-      <div class="project-preview">57.3% late delivery rate — click</div>
-
-      <div id="p1" class="project-content">
-        <p class="highlight">Impact: ~$914K profit at risk identified</p>
-
-        <p><span class="highlight">Problem:</span> High late delivery rate</p>
-        <p><span class="highlight">Insight:</span> SLA mismatch</p>
-
-        <p><span class="highlight">Tools:</span> SQL, Python, Tableau</p>
-
-        <a href="https://public.tableau.com/" target="_blank">View Dashboard</a>
-      </div>
-    </div>
-
-    <div class="project" onclick="toggle(2)">
-      <div class="project-title">Sales Performance Analysis</div>
-      <div class="project-preview">Underperforming regions</div>
-
-      <div id="p2" class="project-content">
-        <p class="highlight">Impact: Identified revenue gaps</p>
-        <p><span class="highlight">Tools:</span> Excel, Tableau</p>
-      </div>
-    </div>
-
-    <div class="project" onclick="toggle(3)">
-      <div class="project-title">Customer Segmentation</div>
-      <div class="project-preview">High-value customers</div>
-
-      <div id="p3" class="project-content">
-        <p class="highlight">Impact: Improved targeting strategy</p>
-        <p><span class="highlight">Tools:</span> Python, SQL</p>
       </div>
     </div>
 
