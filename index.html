@@ -25,7 +25,7 @@
 }
 
 [data-theme="dark"] {
-  /* Dark Mode - Deep Navy Slate */
+  /* Dark Mode */
   --bg: #030712;
   --bg-gradient: linear-gradient(180deg, #030712, #111827);
   --card: rgba(17, 24, 39, 0.7);
@@ -39,13 +39,21 @@
 
 * { box-sizing: border-box; }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  /* Fixed the scroll issue: */
+  height: auto; 
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; 
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  margin: 0;
   color: var(--text);
   background-color: var(--bg);
   transition: background-color 0.4s ease, color 0.4s ease;
-  overflow-x: hidden;
 }
 
 /* THEME TOGGLE */
@@ -53,7 +61,7 @@ body {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 100;
+  z-index: 1000;
   background: var(--card);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
@@ -66,9 +74,10 @@ body {
 }
 .theme-toggle:hover { transform: translateY(-2px); border-color: var(--accent); }
 
-/* CANVAS */
+/* CANVAS (Stays fixed in background) */
 #bg-canvas {
-  position: fixed; top: 0; left: 0;
+  position: fixed; 
+  top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: -2;
   pointer-events: none;
@@ -77,8 +86,10 @@ body {
 
 .container {
   max-width: 850px;
-  margin: 80px auto;
-  padding: 0 24px;
+  margin: 0 auto;
+  padding: 80px 24px 120px 24px; /* Added bottom padding for scroll space */
+  position: relative;
+  z-index: 1;
 }
 
 /* HEADER */
@@ -120,6 +131,7 @@ h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: upp
   transition: 0.3s;
   backdrop-filter: blur(10px);
 }
+.project:hover { border-color: var(--accent); }
 .project.active { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
 .project-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
@@ -147,7 +159,7 @@ h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: upp
 </head>
 <body>
 
-<button class="theme-toggle" id="theme-toggle" title="Switch Theme">
+<button class="theme-toggle" id="theme-toggle">
   <i class="fa-solid fa-moon"></i>
 </button>
 
@@ -156,9 +168,7 @@ h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: upp
 <div class="container">
   <div class="header">
     <img src="Foto-removebg-preview.png" alt="Lutfi" class="profile-img">
-    <div class="title-wrap">
-      <h1>Lutfi Luthoifi</h1>
-    </div>
+    <h1>Lutfi Luthoifi</h1>
   </div>
 
   <p class="about">
@@ -177,10 +187,10 @@ h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: upp
     <a href="mailto:lutfiluthoifi16@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
     <a href="https://wa.me/6281273249943" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-    <a href="#" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+    <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> CV</a>
   </div>
 
-  <h2>Projects</h2>
+  <h2>Featured Projects</h2>
 
   <div class="project">
     <div class="project-header" onclick="this.parentElement.classList.toggle('active')">
@@ -195,21 +205,59 @@ h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: upp
         <p><b>Impact:</b> ~$914K profit at risk identified</p>
         <p><b>Tools:</b> Python, Tableau, SQL</p>
         <ul>
-          <li>Identified high-risk delivery routes.</li>
-          <li>Optimized logistics scheduling to reduce delays.</li>
+          <li>Identified high-risk routes using historical shipping data.</li>
+          <li>Proposed SLA recalibration based on actual performance metrics.</li>
         </ul>
       </div>
     </div>
   </div>
 
+  <div class="project">
+    <div class="project-header" onclick="this.parentElement.classList.toggle('active')">
+      <div>
+        <div class="project-title">Superstore Profitability Analysis</div>
+        <div class="project-preview">Identified profit leakage in Furniture category</div>
+      </div>
+      <div class="chevron"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+    <div class="project-content">
+      <div class="content-inner">
+        <p><b>Insight:</b> Discovered that discounts >20% on Tables led to net losses.</p>
+        <p><b>Tools:</b> Python, Tableau</p>
+        <ul>
+          <li>Analyzed sales performance across multiple product categories.</li>
+          <li>Recommended localized pricing strategies.</li>
+        </ul>
+      </div>
+    </div>
   </div>
+
+  <h2>Professional Experience</h2>
+  <div class="project">
+    <div class="project-header">
+      <div>
+        <div class="project-title">Admin Staff — Partai Ummat</div>
+        <div class="project-preview">May 2022 – Jul 2023</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <div>
+        <div class="project-title">Management Trainee — PT Securindo Packatama</div>
+        <div class="project-preview">May 2019 – Dec 2019</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <script>
 // THEME LOGIC
 const toggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
-// Function to switch theme
 const switchTheme = (theme) => {
   root.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
@@ -221,8 +269,7 @@ toggle.addEventListener('click', () => {
   switchTheme(isDark ? 'light' : 'dark');
 });
 
-// Load saved theme
-const savedTheme = localStorage.getItem('theme') || 'dark'; // Defaults to dark mode
+const savedTheme = localStorage.getItem('theme') || 'dark';
 switchTheme(savedTheme);
 
 // PARTICLE SYSTEM
@@ -251,19 +298,16 @@ class Particle {
   }
 }
 
-for (let i = 0; i < 80; i++) particles.push(new Particle());
+for (let i = 0; i < 70; i++) particles.push(new Particle());
 
 function animate() {
   ctx.clearRect(0, 0, w, h);
-  
-  // Dynamically get colors from CSS variables so it doesn't "break" on theme switch
-  const style = getComputedStyle(root);
-  const color = style.getPropertyValue('--particle').trim();
+  const color = getComputedStyle(root).getPropertyValue('--particle').trim();
 
   particles.forEach(p => {
     p.update();
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
   });
@@ -276,7 +320,7 @@ function animate() {
       if (dist < 150) {
         ctx.beginPath();
         ctx.strokeStyle = color;
-        ctx.globalAlpha = (1 - dist / 150) * 0.5;
+        ctx.globalAlpha = (1 - dist / 150) * 0.4;
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
         ctx.stroke();
