@@ -32,9 +32,9 @@ body{
   z-index:999;
 }
 
-/* HERO */
+/* HERO (FIXED HEIGHT) */
 .hero{
-  height:100vh;
+  height:85vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -87,7 +87,7 @@ body{
 /* CONTAINER */
 .container{
   max-width:920px;
-  margin:80px auto;
+  margin:60px auto;
   padding:0 20px;
 }
 
@@ -130,6 +130,8 @@ h2{
   padding:10px 14px;
   border-radius:10px;
   transition:.3s;
+  text-decoration:none;
+  color:#111;
 }
 .links a:hover{
   transform:translateY(-4px);
@@ -213,13 +215,12 @@ Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to unc
 
 <h2>PROJECTS</h2>
 
-<!-- KEEP YOUR PROJECT CONTENT EXACTLY SAME -->
-<!-- (unchanged, no edits, just animation applied) -->
+<!-- your projects remain SAME -->
 
 </div>
 
 <script>
-// typing effect
+// typing
 const text="Turning Data into Business Impact";
 let i=0;
 function type(){
@@ -250,6 +251,14 @@ window.onscroll=()=>{
   let sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
   document.getElementById("progress").style.width=sc+"%";
 }
+
+// AUTO SCROLL FIX
+setTimeout(()=>{
+  window.scrollTo({
+    top: window.innerHeight * 0.8,
+    behavior: "smooth"
+  });
+},1800);
 </script>
 
 </body>
