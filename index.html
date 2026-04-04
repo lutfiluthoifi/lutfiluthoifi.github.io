@@ -32,21 +32,25 @@ body{
   z-index:999;
 }
 
-/* HERO (FIXED HEIGHT) */
+/* HERO */
 .hero{
-  height:85vh;
+  height:90vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  transition:opacity .4s ease, transform .4s ease;
+}
+
+.hero.fade{
+  opacity:0;
+  transform:translateY(-40px);
 }
 
 .hero h1{
   font-size:56px;
   margin:0;
-  opacity:0;
-  transform:translateY(40px);
   animation:fadeUp 1s forwards;
 }
 
@@ -54,11 +58,9 @@ body{
   font-size:18px;
   color:#666;
   margin-top:10px;
-  opacity:0;
-  animation:fadeUp 1s forwards;
-  animation-delay:.3s;
 }
 
+/* TYPING CURSOR */
 .cursor{
   display:inline-block;
   width:2px;
@@ -76,6 +78,7 @@ body{
 .scroll{
   position:absolute;
   bottom:30px;
+  cursor:pointer;
   animation:bounce 1.5s infinite;
 }
 
@@ -171,7 +174,8 @@ h2{
 
 /* ANIM */
 @keyframes fadeUp{
-  to{opacity:1;transform:translateY(0)}
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
@@ -181,10 +185,10 @@ h2{
 <div id="progress"></div>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero">
   <h1>Lutfi Luthoifi</h1>
   <p><span id="typing"></span><span class="cursor"></span></p>
-  <div class="scroll">↓</div>
+  <div class="scroll" id="scrollBtn">↓</div>
 </div>
 
 <div class="container">
@@ -215,12 +219,12 @@ Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to unc
 
 <h2>PROJECTS</h2>
 
-<!-- your projects remain SAME -->
+<!-- KEEP YOUR ORIGINAL PROJECTS HERE (unchanged) -->
 
 </div>
 
 <script>
-// typing
+// typing effect
 const text="Turning Data into Business Impact";
 let i=0;
 function type(){
@@ -231,6 +235,13 @@ function type(){
   }
 }
 type();
+
+// click scroll (SAFE)
+document.getElementById("scrollBtn").onclick=()=>{
+  document.querySelector(".container").scrollIntoView({
+    behavior:"smooth"
+  });
+};
 
 // scroll reveal
 const observer=new IntersectionObserver(e=>{
@@ -245,20 +256,20 @@ function toggle(id){
   document.getElementById("p"+id).classList.toggle("open");
 }
 
-// progress bar
-window.onscroll=()=>{
+// progress bar + HERO FADE
+window.addEventListener("scroll",()=>{
   let h=document.documentElement;
   let sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
   document.getElementById("progress").style.width=sc+"%";
-}
 
-// AUTO SCROLL FIX
-setTimeout(()=>{
-  window.scrollTo({
-    top: window.innerHeight * 0.8,
-    behavior: "smooth"
-  });
-},1800);
+  // hero fade effect
+  const hero=document.getElementById("hero");
+  if(window.scrollY>100){
+    hero.classList.add("fade");
+  }else{
+    hero.classList.remove("fade");
+  }
+});
 </script>
 
 </body>
