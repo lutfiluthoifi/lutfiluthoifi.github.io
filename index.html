@@ -12,34 +12,33 @@
 
 <style>
 :root {
-  /* Light Mode Variables */
+  /* Light Mode */
   --bg: #ffffff;
-  --bg-gradient: linear-gradient(180deg, #ffffff, #f8fafc);
-  --card: rgba(255, 255, 255, 0.7);
-  --text: #111111;
-  --muted: #666666;
-  --border: #eaeaea;
+  --bg-gradient: linear-gradient(180deg, #ffffff, #f1f5f9);
+  --card: rgba(255, 255, 255, 0.8);
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
   --accent: #6366f1;
   --accent-light: rgba(99, 102, 241, 0.1);
-  --particle-color: rgba(99, 102, 241, 0.3);
-  --line-color: rgba(99, 102, 241, 0.2);
+  --particle: rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] {
-  /* Dark Mode Variables */
-  --bg: #0f172a;
-  --bg-gradient: linear-gradient(180deg, #0f172a, #020617);
-  --card: rgba(30, 41, 59, 0.7);
-  --text: #f1f5f9;
+  /* Dark Mode - Deep Navy Slate */
+  --bg: #030712;
+  --bg-gradient: linear-gradient(180deg, #030712, #111827);
+  --card: rgba(17, 24, 39, 0.7);
+  --text: #f8fafc;
   --muted: #94a3b8;
-  --border: #334155;
+  --border: #1f2937;
   --accent: #818cf8;
   --accent-light: rgba(129, 140, 248, 0.15);
-  --particle-color: rgba(129, 140, 248, 0.5);
-  --line-color: rgba(129, 140, 248, 0.25);
+  --particle: rgba(129, 140, 248, 0.4);
 }
 
-/* BASE */
+* { box-sizing: border-box; }
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   margin: 0;
@@ -49,147 +48,106 @@ body {
   overflow-x: hidden;
 }
 
-/* THEME TOGGLE BUTTON */
+/* THEME TOGGLE */
 .theme-toggle {
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 20px;
+  right: 20px;
   z-index: 100;
   background: var(--card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  padding: 12px;
+  backdrop-filter: blur(12px);
+  width: 45px; height: 45px;
   border-radius: 12px;
   cursor: pointer;
   color: var(--accent);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center;
+  transition: 0.3s;
 }
-.theme-toggle:hover {
-  transform: scale(1.1);
-}
+.theme-toggle:hover { transform: translateY(-2px); border-color: var(--accent); }
 
-/* LIVE BACKGROUND CANVAS */
+/* CANVAS */
 #bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
   z-index: -2;
   pointer-events: none;
   background: var(--bg-gradient);
 }
 
-/* CONTAINER & HEADER */
 .container {
-  max-width: 880px;
-  margin: 70px auto;
-  padding: 0 20px 70px 20px;
-  position: relative;
+  max-width: 850px;
+  margin: 80px auto;
+  padding: 0 24px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  animation: fadeUp 0.8s ease;
-}
-
+/* HEADER */
+.header { display: flex; align-items: center; gap: 24px; animation: fadeUp 0.8s ease; }
 .profile-img {
-  width: 115px;
-  height: 115px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 110px; height: 110px; border-radius: 50%;
   border: 3px solid var(--bg);
-  box-shadow: 0 8px 25px rgba(99,102,241,0.2);
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
-h1 { font-size: 36px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
-h2 { margin-top: 70px; font-size: 14px; color: var(--muted); letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-
-.about { margin-top: 20px; color: var(--text); opacity: 0.9; line-height: 1.7; font-size: 16px; animation: fadeUp 1s ease; }
+h1 { font-size: 32px; margin: 0; font-weight: 800; }
+.about { margin-top: 24px; line-height: 1.8; font-size: 16px; opacity: 0.9; }
 
 /* SKILLS & LINKS */
-.skills { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
 .skills span {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.3s;
+  background: var(--card); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
 }
 
-.links { margin-top: 25px; display: flex; gap: 12px; flex-wrap: wrap; }
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
 .links a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 12px;
-  transition: 0.3s;
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(8px);
+  background: var(--card); border: 1px solid var(--border);
+  padding: 10px 16px; border-radius: 10px;
+  text-decoration: none; color: var(--text); font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 8px; transition: 0.3s;
 }
-.links a:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); }
+.links a i { color: var(--accent); }
+.links a:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-/* PROJECT CARDS */
+h2 { margin-top: 60px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+/* PROJECT CARD */
 .project {
-  margin-top: 25px;
-  border: 1px solid var(--border);
-  padding: 25px;
-  border-radius: 16px;
+  margin-top: 16px;
   background: var(--card);
-  backdrop-filter: blur(12px);
-  transition: 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
 }
-.project.show { opacity: 1; transform: translateY(0); }
-.project.active { border-color: var(--accent); }
+.project.active { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
 .project-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-.project-title { font-size: 19px; font-weight: 700; color: var(--text); }
-.project-preview { color: var(--muted); margin-top: 6px; font-size: 14px; }
+.project-title { font-size: 18px; font-weight: 700; }
+.project-preview { font-size: 14px; color: var(--muted); margin-top: 4px; }
 
-.chevron-icon {
-  color: var(--muted);
-  transition: 0.4s ease;
-  font-size: 14px;
-  padding: 8px;
-  background: rgba(0,0,0,0.05);
-  border-radius: 50%;
+.chevron { 
+  font-size: 14px; color: var(--muted); transition: 0.4s;
+  background: rgba(0,0,0,0.03); width: 30px; height: 30px; 
+  display: flex; align-items: center; justify-content: center; border-radius: 50%;
 }
-.project.active .chevron-icon { transform: rotate(180deg); background: var(--accent-light); color: var(--accent); }
+.project.active .chevron { transform: rotate(180deg); color: var(--accent); background: var(--accent-light); }
 
-.project-content { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; }
+.project-content { max-height: 0; overflow: hidden; opacity: 0; transition: 0.4s ease-in-out; }
 .project.active .project-content { max-height: 1000px; opacity: 1; margin-top: 20px; }
+.content-inner { padding: 15px; background: rgba(0,0,0,0.02); border-radius: 10px; font-size: 15px; }
 
-.content-inner { padding: 20px; border-radius: 12px; background: rgba(0,0,0,0.02); font-size: 15px; }
-
-.highlight { font-weight: 700; color: var(--accent); }
-ul li { margin-bottom: 8px; }
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 600px) {
   .header { flex-direction: column; text-align: center; }
-  .theme-toggle { top: 15px; right: 15px; }
+  .links { justify-content: center; }
 }
 </style>
 </head>
-
 <body>
 
-<button class="theme-toggle" id="theme-btn">
+<button class="theme-toggle" id="theme-toggle" title="Switch Theme">
   <i class="fa-solid fa-moon"></i>
 </button>
 
@@ -197,8 +155,10 @@ ul li { margin-bottom: 8px; }
 
 <div class="container">
   <div class="header">
-    <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
-    <h1>Lutfi Luthoifi</h1>
+    <img src="Foto-removebg-preview.png" alt="Lutfi" class="profile-img">
+    <div class="title-wrap">
+      <h1>Lutfi Luthoifi</h1>
+    </div>
   </div>
 
   <p class="about">
@@ -220,25 +180,24 @@ ul li { margin-bottom: 8px; }
     <a href="#" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
   </div>
 
-  <h2>PROJECTS</h2>
+  <h2>Projects</h2>
 
   <div class="project">
-    <div class="project-header" onclick="toggleProject(this)">
-      <div class="project-title-group">
+    <div class="project-header" onclick="this.parentElement.classList.toggle('active')">
+      <div>
         <div class="project-title">Delivery Delay Risk Analysis</div>
         <div class="project-preview">57.3% late delivery rate → ~$914K profit at risk</div>
       </div>
-      <i class="fa-solid fa-chevron-down chevron-icon"></i>
+      <div class="chevron"><i class="fa-solid fa-chevron-down"></i></div>
     </div>
     <div class="project-content">
       <div class="content-inner">
-        <p><span class="highlight">Problem:</span> High late delivery rate impacting service performance.</p>
-        <p><span class="highlight">Key Insight:</span> Mismatch between SLA targets and actual performance.</p>
+        <p><b>Impact:</b> ~$914K profit at risk identified</p>
+        <p><b>Tools:</b> Python, Tableau, SQL</p>
         <ul>
-          <li>Revenue at risk identified</li>
-          <li>Operational inefficiencies in routing</li>
+          <li>Identified high-risk delivery routes.</li>
+          <li>Optimized logistics scheduling to reduce delays.</li>
         </ul>
-        <p><span class="highlight">Tools:</span> Python, Tableau</p>
       </div>
     </div>
   </div>
@@ -246,90 +205,78 @@ ul li { margin-bottom: 8px; }
   </div>
 
 <script>
-// --- THEME TOGGLE ---
-const themeBtn = document.getElementById('theme-btn');
-const icon = themeBtn.querySelector('i');
+// THEME LOGIC
+const toggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
 
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
+// Function to switch theme
+const switchTheme = (theme) => {
+  root.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
-  icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  toggle.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
 }
 
-themeBtn.addEventListener('click', () => {
-  let currentTheme = document.documentElement.getAttribute('data-theme');
-  setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+toggle.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  switchTheme(isDark ? 'light' : 'dark');
 });
 
-// Load preferred theme
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
+// Load saved theme
+const savedTheme = localStorage.getItem('theme') || 'dark'; // Defaults to dark mode
+switchTheme(savedTheme);
 
-// --- UI LOGIC ---
-function toggleProject(element) {
-  element.parentElement.classList.toggle("active");
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("show"); });
-});
-document.querySelectorAll(".project").forEach(el => observer.observe(el));
-
-// --- PARTICLE SYSTEM ---
+// PARTICLE SYSTEM
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
-let width, height, particles = [];
+let w, h, particles = [];
 
 function resize() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
 }
 window.addEventListener('resize', resize);
 resize();
 
 class Particle {
   constructor() {
-    this.x = Math.random() * width;
-    this.y = Math.random() * height;
-    this.vx = (Math.random() - 0.5) * 0.5;
-    this.vy = (Math.random() - 0.5) * 0.5;
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
   }
   update() {
     this.x += this.vx; this.y += this.vy;
-    if (this.x < 0 || this.x > width) this.vx *= -1;
-    if (this.y < 0 || this.y > height) this.vy *= -1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
-    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--particle-color');
-    ctx.fill();
+    if (this.x < 0 || this.x > w) this.vx *= -1;
+    if (this.y < 0 || this.y > h) this.vy *= -1;
   }
 }
 
-function init() {
-  particles = [];
-  for (let i = 0; i < 80; i++) particles.push(new Particle());
-}
-init();
+for (let i = 0; i < 80; i++) particles.push(new Particle());
 
 function animate() {
-  ctx.clearRect(0, 0, width, height);
-  const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--line-color');
+  ctx.clearRect(0, 0, w, h);
   
+  // Dynamically get colors from CSS variables so it doesn't "break" on theme switch
+  const style = getComputedStyle(root);
+  const color = style.getPropertyValue('--particle').trim();
+
   particles.forEach(p => {
-    p.update(); p.draw();
+    p.update();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
   });
 
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
+      const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < 150) {
         ctx.beginPath();
-        ctx.strokeStyle = lineColor;
-        ctx.globalAlpha = 1 - (dist/150);
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = (1 - dist / 150) * 0.5;
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
         ctx.stroke();
