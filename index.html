@@ -1,96 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lutfi Luthoifi — Data Portfolio</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{
-  --accent:#6366f1;
-}
-
-/* BASE */
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
   background:#fff;
   color:#111;
-  overflow-x:hidden;
-}
-
-/* SCROLL BAR */
-#progress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:3px;
-  background:var(--accent);
-  width:0%;
-  z-index:999;
 }
 
 /* HERO */
 .hero{
-  height:90vh;
+  height:80vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  transition:opacity .4s ease, transform .4s ease;
-}
-
-.hero.fade{
-  opacity:0;
-  transform:translateY(-40px);
 }
 
 .hero h1{
-  font-size:56px;
+  font-size:48px;
   margin:0;
-  animation:fadeUp 1s forwards;
 }
 
 .hero p{
-  font-size:18px;
   color:#666;
-  margin-top:10px;
-}
-
-/* TYPING CURSOR */
-.cursor{
-  display:inline-block;
-  width:2px;
-  background:#111;
-  margin-left:4px;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  0%,50%,100%{opacity:1}
-  25%,75%{opacity:0}
-}
-
-/* SCROLL HINT */
-.scroll{
-  position:absolute;
-  bottom:30px;
-  cursor:pointer;
-  animation:bounce 1.5s infinite;
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(10px)}
 }
 
 /* CONTAINER */
 .container{
-  max-width:920px;
-  margin:60px auto;
+  max-width:900px;
+  margin:40px auto;
   padding:0 20px;
 }
 
@@ -102,25 +49,14 @@ body{
 }
 
 .profile-img{
-  width:110px;
+  width:100px;
   border-radius:50%;
-  transition:.4s;
-}
-.profile-img:hover{
-  transform:scale(1.05) rotate(3deg);
-}
-
-/* TEXT */
-h2{
-  margin-top:70px;
-  color:#888;
-  letter-spacing:1px;
 }
 
 /* SKILLS */
 .skills span{
   background:#f3f4f6;
-  padding:6px 14px;
+  padding:6px 12px;
   border-radius:20px;
   margin:5px;
   display:inline-block;
@@ -128,67 +64,37 @@ h2{
 
 /* LINKS */
 .links a{
-  display:inline-block;
   margin:5px;
-  padding:10px 14px;
-  border-radius:10px;
-  transition:.3s;
+  display:inline-block;
   text-decoration:none;
   color:#111;
 }
-.links a:hover{
-  transform:translateY(-4px);
-  background:#f5f5f5;
-}
 
-/* CARD */
+/* PROJECT */
 .project{
   margin-top:30px;
   padding:20px;
   border:1px solid #eee;
-  border-radius:14px;
-  transition:.3s;
-  opacity:0;
-  transform:translateY(20px);
-}
-.project.show{
-  opacity:1;
-  transform:translateY(0);
+  border-radius:10px;
 }
 
-.project:hover{
-  transform:translateY(-6px);
-}
-
-/* CONTENT */
 .project-content{
-  max-height:0;
-  overflow:hidden;
-  transition:.5s;
+  display:none;
+  margin-top:10px;
 }
 
 .project-content.open{
-  max-height:1000px;
-  margin-top:15px;
-}
-
-/* ANIM */
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+  display:block;
 }
 </style>
 </head>
 
 <body>
 
-<div id="progress"></div>
-
 <!-- HERO -->
-<div class="hero" id="hero">
+<div class="hero">
   <h1>Lutfi Luthoifi</h1>
-  <p><span id="typing"></span><span class="cursor"></span></p>
-  <div class="scroll" id="scrollBtn">↓</div>
+  <p id="typing"></p>
 </div>
 
 <div class="container">
@@ -211,65 +117,44 @@ Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to unc
 </div>
 
 <div class="links">
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fa-solid fa-envelope"></i> Email</a>
-<a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-<a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+<a href="#"><i class="fa-solid fa-envelope"></i> Email</a>
+<a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
 </div>
 
 <h2>PROJECTS</h2>
 
-<!-- KEEP YOUR ORIGINAL PROJECTS HERE (unchanged) -->
+<div class="project">
+<div onclick="toggle(1)">Delivery Delay Risk Analysis</div>
+<div id="p1" class="project-content">
+<p>Impact: ~$914K profit at risk</p>
+</div>
+</div>
 
 </div>
 
 <script>
-// typing effect
+// SAFE typing
 const text="Turning Data into Business Impact";
 let i=0;
 function type(){
   if(i<text.length){
-    document.getElementById("typing").innerHTML+=text.charAt(i);
+    document.getElementById("typing").innerHTML+=text[i];
     i++;
     setTimeout(type,40);
   }
 }
 type();
 
-// click scroll (SAFE)
-document.getElementById("scrollBtn").onclick=()=>{
-  document.querySelector(".container").scrollIntoView({
-    behavior:"smooth"
-  });
-};
-
-// scroll reveal
-const observer=new IntersectionObserver(e=>{
-  e.forEach(el=>{
-    if(el.isIntersecting){el.target.classList.add("show")}
-  })
-});
-document.querySelectorAll(".project").forEach(el=>observer.observe(el));
-
-// toggle
+// SAFE toggle
 function toggle(id){
-  document.getElementById("p"+id).classList.toggle("open");
-}
-
-// progress bar + HERO FADE
-window.addEventListener("scroll",()=>{
-  let h=document.documentElement;
-  let sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-  document.getElementById("progress").style.width=sc+"%";
-
-  // hero fade effect
-  const hero=document.getElementById("hero");
-  if(window.scrollY>100){
-    hero.classList.add("fade");
+  const el=document.getElementById("p"+id);
+  if(el.classList.contains("open")){
+    el.classList.remove("open");
   }else{
-    hero.classList.remove("fade");
+    el.classList.add("open");
   }
-});
+}
 </script>
 
 </body>
