@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lutfi Luthoifi — Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#f9fafb;
+  color:#111;
+}
+
+/* layout */
+.container{
+  max-width:900px;
+  margin:60px auto;
+  padding:20px;
+}
+
+/* header */
+.header{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.profile-img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+}
+
+/* text */
+h1{margin:0;}
+h2{
+  margin-top:60px;
+  font-size:16px;
+  color:#777;
+}
+
+.about{
+  margin-top:15px;
+  color:#444;
+}
+
+/* skills */
+.skills{
+  margin-top:15px;
+}
+.skills span{
+  background:#eee;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:13px;
+  margin-right:5px;
+}
+
+/* links */
+.links{
+  margin-top:20px;
+}
+.links a{
+  margin-right:10px;
+  text-decoration:none;
+  color:#333;
+}
+
+/* project */
+.project{
+  margin-top:20px;
+  border:1px solid #eaeaea;
+  padding:15px;
+  border-radius:10px;
+  background:#fff;
+}
+
+.project-title{
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* 🔥 bulletproof toggle */
+.project-content{
+  display:none;
+  margin-top:10px;
+}
+
+.project-content.active{
+  display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+  <img src="Foto-removebg-preview.png" class="profile-img">
+  <h1>Lutfi Luthoifi</h1>
+</div>
+
+<p class="about">
+Aspiring Data Analyst skilled in SQL, Python, and Tableau.
+</p>
+
+<div class="skills">
+  <span>SQL</span>
+  <span>Python</span>
+  <span>Tableau</span>
+</div>
+
+<div class="links">
+  <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank">LinkedIn</a>
+</div>
+
+<h2>PROJECTS</h2>
+
+<!-- TEST PROJECT -->
+<div class="project">
+  <div class="project-title" onclick="toggle(this)">Project 1</div>
+  <div class="project-content">
+    <p>Detail works. Scroll should be NORMAL now.</p>
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-title" onclick="toggle(this)">Project 2</div>
+  <div class="project-content">
+    <p>Another content.</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(el){
+  const content = el.nextElementSibling;
+
+  if(content.classList.contains("active")){
+    content.classList.remove("active");
+  } else {
+    content.classList.add("active");
+  }
+}
+</script>
+
+</body>
+</html>
