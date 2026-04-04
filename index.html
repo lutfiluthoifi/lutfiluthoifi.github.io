@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== LIVE BACKGROUND ===== */
+/* BACKGROUND */
 canvas#bg {
   position: fixed;
   top: 0;
@@ -37,10 +37,9 @@ canvas#bg {
   width: 100%;
   height: 100%;
   z-index: -2;
-  pointer-events: none; /* IMPORTANT FIX */
+  pointer-events: none;
 }
 
-/* glow */
 body::before{
   content:"";
   position:fixed;
@@ -55,7 +54,7 @@ body::before{
   50%{transform:translateY(40px)}
 }
 
-/* ===== LAYOUT ===== */
+/* LAYOUT */
 .container {
   max-width: 920px;
   margin: 70px auto;
@@ -181,16 +180,18 @@ h2 {
   font-size: 14px;
 }
 
-/* ✅ FIXED DROPDOWN */
+/* 🔥 FINAL FIX (NO HEIGHT ANIMATION) */
 .project-content {
-  height: 0;
-  overflow: hidden;
+  display: none;
   opacity: 0;
-  transition: height 0.4s ease, opacity 0.3s ease;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
 }
 
 .project-content.open {
+  display: block;
   opacity: 1;
+  transform: translateY(0);
   margin-top: 15px;
   padding:15px;
   border-radius: 10px;
@@ -254,24 +255,14 @@ Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to unc
 
 <h2>PROJECTS</h2>
 
-<!-- KEEP YOUR ORIGINAL PROJECT CONTENT HERE EXACTLY -->
+<!-- KEEP YOUR ORIGINAL PROJECT CONTENT EXACTLY -->
 
 </div>
 
 <script>
 function toggle(id) {
   const el = document.getElementById("p" + id);
-
-  if (el.classList.contains("open")) {
-    el.style.height = el.scrollHeight + "px";
-    requestAnimationFrame(() => {
-      el.style.height = "0px";
-    });
-    el.classList.remove("open");
-  } else {
-    el.classList.add("open");
-    el.style.height = el.scrollHeight + "px";
-  }
+  el.classList.toggle("open");
 }
 
 /* scroll reveal */
@@ -286,14 +277,7 @@ document.querySelectorAll(".project").forEach(el=>{
   observer.observe(el);
 });
 
-/* fix on resize */
-window.addEventListener("resize", () => {
-  document.querySelectorAll(".project-content.open").forEach(el => {
-    el.style.height = el.scrollHeight + "px";
-  });
-});
-
-/* ===== LIVE PARTICLES ===== */
+/* particles */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -306,12 +290,12 @@ resize();
 window.addEventListener("resize", resize);
 
 let particles = [];
-for(let i=0;i<50;i++){
+for(let i=0;i<40;i++){
   particles.push({
     x: Math.random()*w,
     y: Math.random()*h,
-    vx: (Math.random()-0.5)*0.3,
-    vy: (Math.random()-0.5)*0.3,
+    vx: (Math.random()-0.5)*0.2,
+    vy: (Math.random()-0.5)*0.2,
     r: Math.random()*2+1
   });
 }
@@ -328,7 +312,7 @@ function animate(){
 
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(99,102,241,0.4)";
+    ctx.fillStyle="rgba(99,102,241,0.3)";
     ctx.fill();
   });
 
