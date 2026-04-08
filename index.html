@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -53,4 +52,675 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   margin: 0;
   color: var(--text-main);
-  overflow-x:
+  overflow-x: hidden;
+  background-color: transparent;
+  transition: color 0.4s ease;
+}
+
+/* LIVE BACKGROUND CANVAS */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  background: var(--bg-gradient);
+  transition: background 0.4s ease;
+}
+
+/* BACKGROUND GLOW */
+body::before{
+  content: "";
+  position: fixed;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent);
+  top: -100px; right: -100px;
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100% {transform: translateY(0)}
+  50% {transform: translateY(30px)}
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text-main);
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.theme-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  color: var(--accent);
+  border-color: rgba(99,102,241,0.4);
+}
+
+/* LAYOUT */
+.container {
+  max-width: 880px;
+  margin: 70px auto;
+  padding: 0 20px 70px 20px;
+  position: relative;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  animation: fadeUp 0.8s ease;
+}
+
+.profile-img {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--profile-border);
+  box-shadow: 0 8px 25px rgba(99,102,241,0.2);
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.profile-img:hover{
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 12px 35px rgba(99,102,241,0.3);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* TEXT */
+h2 {
+  margin-top: 70px;
+  font-size: 16px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+}
+
+.about {
+  margin-top: 20px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 16px;
+  animation: fadeUp 1s ease;
+  transition: color 0.4s ease;
+}
+
+/* SKILLS */
+.skills {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  animation: fadeUp 1.2s ease;
+}
+.skills span {
+  background: var(--skill-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(5px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: all 0.3s;
+}
+.skills span:hover {
+  background: var(--accent-light);
+  border-color: rgba(99,102,241,0.3);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* LINKS */
+.links {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp 1.4s ease;
+}
+.links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  background: var(--link-bg);
+  backdrop-filter: blur(8px);
+}
+.links a i {
+  font-size: 16px;
+  color: var(--accent);
+}
+.links a:hover {
+  background: var(--card-bg-hover);
+  transform: translateY(-3px);
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 4px 15px rgba(99,102,241,0.1);
+  color: var(--accent);
+}
+
+/* PROJECT CARD */
+.project {
+  margin-top: 25px;
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.project.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project:hover {
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: 0 10px 30px rgba(99,102,241,0.08);
+}
+
+/* PROJECT HEADER */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.project-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  font-size: 19px;
+  font-weight: 700;
+  transition: 0.2s;
+  color: var(--text-main);
+}
+.project-header:hover .project-title {
+  color: var(--accent);
+}
+
+.project-preview {
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* CHEVRON ICON */
+.chevron-icon {
+  color: var(--text-muted);
+  transition: transform 0.4s ease, color 0.3s ease, background 0.3s ease;
+  font-size: 16px;
+  padding: 10px;
+  background: var(--chevron-bg);
+  border-radius: 50%;
+}
+.project-header:hover .chevron-icon {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.project.active .chevron-icon {
+  transform: rotate(180deg);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* CONTENT ANIMATION (FIXED SAFELY) */
+.project-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+}
+
+.project.active .project-content {
+  opacity: 1;
+  margin-top: 20px;
+}
+
+.content-inner {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--content-bg);
+  border: 1px solid var(--border-color);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* TEXT FORMATTING */
+.highlight { font-weight: 700; color: var(--text-main); }
+ul { padding-left: 20px; margin-top: 8px; }
+li { margin-bottom: 6px; color: var(--text-secondary); }
+
+/* LINKS INSIDE */
+.project-content a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.project-content a:hover{ text-decoration: underline; }
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header { flex-direction: column; text-align: center; }
+  .skills, .links { justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+  <i class="fa-solid fa-moon"></i>
+</button>
+
+<div class="container">
+
+<div class="header">
+  <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
+  <h1>Lutfi Luthoifi</h1>
+</div>
+
+<p class="about">
+Aspiring Data Analyst skilled in SQL, Python, and Tableau. I analyze data to uncover risks, improve performance, and drive business impact.
+</p>
+
+<div class="skills">
+  <span>Analytical Thinking</span>
+  <span>Problem Solving</span>
+  <span>Attention to Detail</span>
+  <span>Structured Thinking</span>
+  <span>Adaptability</span>
+</div>
+
+<div class="links">
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fa-solid fa-envelope"></i> Email</a>
+  <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+</div>
+
+<h2>PROJECTS</h2>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">Delivery Delay Risk & Profitability Analysis</div>
+      <div class="project-preview">
+        57.3% deliveries late → ~$914K profit at risk driven by SLA mismatch
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  
+  <div class="project-content">
+    <div class="content-inner">
+      <p><span class="highlight">Business Problem:</span><br>
+      High late delivery rate (57.3%) impacting customer satisfaction and creating significant financial risk.</p>
+      <p><span class="highlight">Objective:</span><br>
+      Identify key drivers of delivery delays and provide actionable recommendations to reduce late deliveries by ≥10% within 6 months.</p>
+      <p><span class="highlight">Tools:</span><br>
+      Python, Tableau, Google Slides</p>
+      <p><span class="highlight">What I Did:</span></p>
+      <ul>
+        <li>Analyzed supply chain data (orders, shipping, delivery performance)</li>
+        <li>Measured late delivery rate across shipping modes and regions</li>
+        <li>Compared SLA (promised) vs actual delivery performance</li>
+        <li>Quantified financial impact using <b>Profit at Risk</b></li>
+        <li>Built interactive Tableau dashboard for stakeholder insights</li>
+      </ul>
+      <p><span class="highlight">Key Insights:</span></p>
+      <ul>
+        <li>57.3% of deliveries were late → systemic operational issue</li>
+        <li>Premium shipping modes (First & Second Class) had the highest delay rates due to unrealistic SLA commitments</li>
+        <li>Standard Class contributed the highest financial risk (~$914K) due to large order volume</li>
+        <li>Delays were consistent across regions and product categories → operational issue, not demand-driven</li>
+      </ul>
+      <p><span class="highlight">Business Impact:</span></p>
+      <ul>
+        <li>~$914K profit at risk from late deliveries</li>
+        <li>Increased risk of customer dissatisfaction and SLA failure</li>
+        <li>Operational inefficiencies in fulfillment and capacity planning</li>
+      </ul>
+      <p><span class="highlight">Recommendations:</span></p>
+      <ul>
+        <li>Redesign SLA for premium shipping modes to match operational capacity</li>
+        <li>Prioritize Standard Class improvements for maximum financial impact</li>
+        <li>Optimize warehouse and dispatch processes</li>
+        <li>Implement performance monitoring to reduce delays by ≥10% within 6 months</li>
+      </ul>
+      <div style="margin-top: 20px;">
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank">
+          <i class="fa-solid fa-chart-simple"></i> View Dashboard
+        </a>
+        &nbsp; &nbsp;
+        <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit?slide=id.g4dfce81f19_0_45#slide=id.g4dfce81f19_0_45" target="_blank">
+          <i class="fa-solid fa-file-powerpoint"></i> View Presentation
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">Retail Profitability Analysis (Superstore)</div>
+      <div class="project-preview">
+        Profit decline driven by discounting & loss-making products (Tables)
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  
+  <div class="project-content">
+    <div class="content-inner">
+      <p><span class="highlight">Business Problem:</span><br>
+      Despite strong sales performance, profitability remains inconsistent due to hidden losses across products and pricing strategies.</p>
+      <p><span class="highlight">Objective:</span><br>
+      Identify key drivers of profit loss and provide actionable strategies to improve overall profitability.</p>
+      <p><span class="highlight">Tools:</span><br>
+      Python, Tableau</p>
+      <p><span class="highlight">What I Did:</span></p>
+      <ul>
+        <li>Cleaned and analyzed retail transaction data (sales, profit, discount, customer segments)</li>
+        <li>Evaluated profitability across product categories, regions, and customer segments</li>
+        <li>Analyzed the relationship between discount levels and profit performance</li>
+        <li>Built regression model to validate key drivers of profitability</li>
+        <li>Developed Tableau dashboard to communicate insights effectively</li>
+      </ul>
+      <p><span class="highlight">Key Insights:</span></p>
+      <ul>
+        <li>Profit declines are primarily driven by excessive discounting</li>
+        <li>Profit turns negative beyond ~20% discount threshold</li>
+        <li>Furniture category, especially Tables, consistently generates losses despite high sales</li>
+        <li>Consumer segment drives volume but operates with lower profit efficiency</li>
+        <li>Regional differences exist but are not a significant driver of profitability (validated through regression)</li>
+      </ul>
+      <p><span class="highlight">Business Impact:</span></p>
+      <ul>
+        <li>Significant profit leakage caused by over-discounting</li>
+        <li>Hidden losses in high-volume product categories</li>
+        <li>Inefficient growth driven by low-margin customer segments</li>
+      </ul>
+      <p><span class="highlight">Recommendations:</span></p>
+      <ul>
+        <li>Limit discount levels to below ~20% to protect margins</li>
+        <li>Re-evaluate pricing strategy for loss-making products (Tables & Furniture)</li>
+        <li>Shift focus toward higher-margin segments (e.g., Home Office)</li>
+        <li>Improve margin efficiency in high-volume segments (Consumer)</li>
+      </ul>
+      <div style="margin-top: 20px;">
+        <a href="https://colab.research.google.com/drive/1-lwWwslqR41BtH6-YE6eWhxO-AY9yW9H" target="_blank"><i class="fa-brands fa-python"></i> View Analysis </a>
+        &nbsp; &nbsp;
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/SuperStore_17751203732730/Dashboard1" target="_blank"><i class="fa-solid fa-chart-simple"></i> View Dashboard </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>EXPERIENCE</h2>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">Admin Staff — Partai Ummat</div>
+      <div class="project-preview">May 2022 – Jul 2023</div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  <div class="project-content">
+    <div class="content-inner">
+      <ul>
+        <li>Managed compliance documentation across 3 provinces</li>
+        <li>Improved administrative tracking system</li>
+        <li>Coordinated cross-regional teams</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">Management Trainee — PT Securindo Packatama</div>
+      <div class="project-preview">May 2019 – Dec 2019</div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  <div class="project-content">
+    <div class="content-inner">
+      <ul>
+        <li>Maintained database accuracy and validated records</li>
+        <li>Supported reporting and issue resolution</li>
+        <li>Handled scheduling for 200+ staff</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>EDUCATION</h2>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">RevoU — Full Stack Data Analytics</div>
+      <div class="project-preview">Oct 2025 – Feb 2026</div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  <div class="project-content">
+    <div class="content-inner">
+      <p style="margin:0;">Completed hands-on training focused on solving business problems with analytical solutions, applying statistical concepts, and using diverse tools such as Google Sheets, SQL, Python, and Tableau to generate meaningful insights.</p>
+    </div>
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-header" style="cursor: default;">
+    <div class="project-title-group">
+      <div class="project-title">Trisakti Institute of Transportation and Logistics</div>
+      <div class="project-preview">Bachelor of Air Transportation Management (GPA: 3.18) • Sep 2013 - Apr 2018</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// --- DARK MODE LOGIC ---
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  document.body.setAttribute('data-theme', 'dark');
+  themeIcon.classList.replace('fa-moon', 'fa-sun');
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.body.getAttribute('data-theme');
+  if (currentTheme === 'dark') {
+    document.body.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
+  } else {
+    document.body.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  }
+});
+
+// --- BULLETPROOF ACCORDION LOGIC ---
+function toggleProject(element) {
+  const projectContainer = element.parentElement;
+  const content = projectContainer.querySelector('.project-content');
+  
+  if (projectContainer.classList.contains("active")) {
+    // Close
+    projectContainer.classList.remove("active");
+    content.style.maxHeight = null; 
+  } else {
+    // Open
+    projectContainer.classList.add("active");
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+}
+
+// Open the first project by default
+document.addEventListener("DOMContentLoaded", () => {
+  const firstProject = document.querySelector(".project");
+  if(firstProject) {
+    firstProject.classList.add("active");
+    const content = firstProject.querySelector(".project-content");
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+});
+
+// Recalculate heights if the user resizes the window or rotates their phone
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.project.active .project-content').forEach(content => {
+    content.style.maxHeight = content.scrollHeight + "px";
+  });
+});
+
+// --- SCROLL ANIMATIONS ---
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".project").forEach(el=>{
+  observer.observe(el);
+});
+
+// --- LIVE BACKGROUND PARTICLE SYSTEM ---
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+let particles = [];
+
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * 0.6; 
+    this.vy = (Math.random() - 0.5) * 0.6; 
+    this.radius = Math.random() * 1.5 + 0.5;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(99, 102, 241, 0.3)'; 
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particles = [];
+  let particleCount = Math.floor((width * height) / 16000); 
+  if (particleCount > 80) particleCount = 80; 
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+}
+initParticles();
+// Removed the particle re-init on resize to prevent mobile browser glitches when scrolling
+// window.addEventListener('resize', initParticles);
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      if (distance < 140) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        const opacity = 1 - (distance / 140);
+        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.2})`; 
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
