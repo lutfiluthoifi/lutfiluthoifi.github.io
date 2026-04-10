@@ -488,9 +488,9 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
     <div class="project-title-group">
-      <div class="project-title">Retail Profitability Analysis (Superstore)</div>
+      <div class="project-title">Superstore Profitability Turnaround: Discount Strategy & RFM Segmentation</div>
       <div class="project-preview">
-        Profit decline driven by discounting & loss-making products (Tables)
+        Executive dashboard simulating discount caps & rescuing 'At Risk' VIP customers.
       </div>
     </div>
     <i class="fa-solid fa-chevron-down chevron-icon"></i>
@@ -498,54 +498,40 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
   
   <div class="project-content">
     <div class="content-inner">
-      <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800&h=450" alt="Analysis Preview" class="project-image">
+      <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800&h=450" alt="Superstore Dashboard Preview" class="project-image">
 
-      <p><span class="highlight">Business Problem:</span><br>
-      Despite strong sales performance, profitability remains inconsistent due to hidden losses across products and pricing strategies.</p>
+      <p><span class="highlight">The Business Problem:</span><br>
+      Superstore generates a substantial volume of Sales, yet preliminary Exploratory Data Analysis (EDA) revealed inconsistent profitability across product lines. While top-line revenue appears healthy, uncontrolled discounting strategies have created hidden "profit leaks" that actively drain the company's overall earnings.</p>
       
-      <p><span class="highlight">Objective:</span><br>
-      Identify key drivers of profit loss and provide actionable strategies to improve overall profitability.</p>
+      <p><span class="highlight">The Objective:</span><br>
+      To diagnose the root causes of financial losses at both the product and customer levels, and to design an interactive executive dashboard that enables management to simulate new pricing policies and restore profitability.</p>
       
-      <p><span class="highlight">Tools:</span><br>
-      Python, Tableau</p>
+      <p><span class="highlight">Tech Stack:</span><br>
+      Python (Pandas, RFM Modeling), Tableau (Geospatial Mapping, What-If Parameters, UI/UX Design)</p>
       
-      <p><span class="highlight">What I Did:</span></p>
+      <p><span class="highlight">The Process (What I Did):</span></p>
       <ul>
-        <li>Cleaned and analyzed retail transaction data (sales, profit, discount, customer segments)</li>
-        <li>Evaluated profitability across product categories, regions, and customer segments</li>
-        <li>Analyzed the relationship between discount levels and profit performance</li>
-        <li>Built regression model to validate key drivers of profitability</li>
-        <li>Developed Tableau dashboard to communicate insights effectively</li>
+        <li><strong>Data Engineering (Python):</strong> Preprocessed historical transaction data and performed feature engineering to structure the dataset for deep-dive analysis, intentionally retaining business outliers (e.g., extreme discounts) to accurately capture profit leaks.</li>
+        <li><strong>Customer Segmentation (Python):</strong> Built an RFM (Recency, Frequency, Monetary) model to cluster the customer base into critical business segments (e.g., Champions, At Risk Big Spenders).</li>
+        <li><strong>Interactive Simulation (Tableau):</strong> Developed a Dark Mode executive dashboard featuring a <em>What-If Parameter</em> to simulate the financial impact of capping discounts.</li>
+        <li><strong>UI/UX Optimization:</strong> Implemented <em>Viz-in-Tooltip</em> geospatial mapping to maintain a clean, high data-ink ratio and minimize cognitive load.</li>
       </ul>
       
-      <p><span class="highlight">Key Insights:</span></p>
+      <p><span class="highlight">Key Insights & Recommendations:</span></p>
       <ul>
-        <li>Profit declines are primarily driven by excessive discounting</li>
-        <li>Profit turns negative beyond ~20% discount threshold</li>
-        <li>Furniture category, especially Tables, consistently generates losses despite high sales</li>
-        <li>Consumer segment drives volume but operates with lower profit efficiency</li>
-        <li>Regional differences exist but are not a significant driver of profitability (validated through regression)</li>
+        <li><strong>The Profit Killers:</strong> The <em>Tables</em> product category is the primary driver of financial loss, largely due to an aggressive discount strategy averaging above 20%.</li>
+        <li><strong>Optimal Discount Policy:</strong> The <em>What-If Simulation</em> revealed that enforcing a strict 20% maximum discount cap can successfully transition historically unprofitable product lines back to breakeven or profitability.</li>
+        <li><strong>Rescuing VIP Clients:</strong> Segmentation analysis identified a critical group of <em>At Risk (Big Spenders)</em> who are on the verge of churning. Blanket discount budgets should be strategically reallocated into targeted <em>Win-Back Campaigns</em> exclusively for this high-value cohort.</li>
       </ul>
       
-      <p><span class="highlight">Business Impact:</span></p>
+      <p><span class="highlight">Projected Business Impact:</span></p>
       <ul>
-        <li>Significant profit leakage caused by over-discounting</li>
-        <li>Hidden losses in high-volume product categories</li>
-        <li>Inefficient growth driven by low-margin customer segments</li>
-      </ul>
-      
-      <p><span class="highlight">Recommendations:</span></p>
-      <ul>
-        <li>Limit discount levels to below ~20% to protect margins</li>
-        <li>Re-evaluate pricing strategy for loss-making products (Tables & Furniture)</li>
-        <li>Shift focus toward higher-margin segments (e.g., Home Office)</li>
-        <li>Improve margin efficiency in high-volume segments (Consumer)</li>
+        <li><strong>Profit Recovery:</strong> By simulating a 20% discount cap, the company is projected to stop 100% of profit leaks within the <em>Tables</em> category, significantly stabilizing the overall Profit Margin.</li>
+        <li><strong>Marketing Budget Efficiency:</strong> Pivoting from a "mass product discount" strategy to a "targeted customer discount" approach allows the business to retain high-value customers without requiring additional marketing expenditures.</li>
+        <li><strong>Decision-Making Acceleration:</strong> The centralized, clean UI of the dashboard transforms static reporting into a dynamic, real-time strategy simulator.</li>
       </ul>
       
       <div class="project-actions">
-        <a href="https://colab.research.google.com/drive/1-lwWwslqR41BtH6-YE6eWhxO-AY9yW9H" target="_blank" class="btn-cta">
-          <i class="fa-brands fa-python"></i> View Python Analysis
-        </a>
         <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/SuperStore_17751203732730/Dashboard1" target="_blank" class="btn-cta">
           <i class="fa-solid fa-chart-simple"></i> View Dashboard
         </a>
