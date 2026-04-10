@@ -507,26 +507,27 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
       To diagnose the root causes of financial losses at both the product and customer levels, and to design an interactive executive dashboard that enables management to simulate new pricing policies and restore profitability.</p>
       
       <p><span class="highlight">Tech Stack:</span><br>
-      Python (RFM Modeling), Tableau (Geospatial Mapping, What-If Parameters, UI/UX Design)</p>
+      Python (Pandas, RFM Modeling), Tableau (Geospatial Mapping, What-If Parameters, UI/UX Design)</p>
       
       <p><span class="highlight">The Process (What I Did):</span></p>
       <ul>
         <li><strong>Data Engineering (Python):</strong> Preprocessed historical transaction data and performed feature engineering to structure the dataset for deep-dive analysis, intentionally retaining business outliers (e.g., extreme discounts) to accurately capture profit leaks.</li>
         <li><strong>Customer Segmentation (Python):</strong> Built an RFM (Recency, Frequency, Monetary) model to cluster the customer base into critical business segments (e.g., Champions, At Risk Big Spenders).</li>
-        <li><strong>Interactive Simulation (Tableau):</strong> Developed a Dark Mode executive dashboard featuring a <em>What-If Parameter</em>  to simulate the financial impact of capping discounts.</li>
-        <li><strong>UI/UX Optimization:</strong> Implemented <em>Viz-in-Tooltip</em>  geospatial mapping to maintain a clean, high data-ink ratio and minimize cognitive load.</li>
+        <li><strong>Interactive Simulation (Tableau):</strong> Developed a Dark Mode executive dashboard featuring a <em>What-If Parameter</em> to simulate the financial impact of capping discounts.</li>
+        <li><strong>UI/UX Optimization:</strong> Implemented <em>Viz-in-Tooltip</em> geospatial mapping to maintain a clean, high data-ink ratio and minimize cognitive load.</li>
       </ul>
       
       <p><span class="highlight">Key Insights & Recommendations:</span></p>
       <ul>
-        <li><strong>The Profit Killers:</strong> The <em>Tables</em> product category is the primary driver of financial loss, largely due to an aggressive discount strategy averaging above 20%.</li>
-        <li><strong>Optimal Discount Policy:</strong> The <em>What-If Simulation</em>  revealed that enforcing a strict 20% maximum discount cap can successfully transition historically unprofitable product lines back to breakeven or profitability.</li>
-        <li><strong>Rescuing VIP Clients:</strong> Segmentation analysis identified a critical group of <em>At Risk (Big Spenders)</em>  who are on the verge of churning. Blanket discount budgets should be strategically reallocated into targeted <em>Win-Back Campaigns</em>  exclusively for this high-value cohort.</li>
+        <li><strong>The Illusion of Volume (Opportunity Loss):</strong> While categories like <em>Machines</em> and <em>Binders</em> remain profitable on the surface, excessive discounting causes massive "invisible" profit leaks, leaving tens of thousands of dollars in <strong>unrealized margins</strong>.</li>
+        <li><strong>The Active Profit Killers:</strong> The <em>Tables</em> category is actively draining overall earnings, acting as the primary driver of direct financial loss due to an aggressive discount strategy averaging above 20%.</li>
+        <li><strong>Optimal Discount Policy:</strong> The <em>What-If Simulation</em> proves that enforcing a strict 20% maximum discount cap serves a dual purpose: it rescues currently unprofitable products (Tables) back to breakeven, while simultaneously maximizing unrealized profit on high-ticket items.</li>
+        <li><strong>Rescuing VIP Clients:</strong> Segmentation analysis identified a critical group of <em>At Risk (Big Spenders)</em> who are on the verge of churning. Blanket discount budgets should be strategically reallocated into targeted <em>Win-Back Campaigns</em> exclusively for this high-value cohort.</li>
       </ul>
       
       <p><span class="highlight">Projected Business Impact:</span></p>
       <ul>
-        <li><strong>Profit Recovery:</strong> By simulating a 20% discount cap, the company is projected to stop 100% of profit leaks within the <em>Tables</em>  category, significantly stabilizing the overall Profit Margin.</li>
+        <li><strong>Margin Maximization & Profit Recovery:</strong> By simulating a 20% discount cap, the company is projected to not only stop 100% of the active profit bleed within the <em>Tables</em> category but also unlock significant trapped revenue across historically over-discounted items.</li>
         <li><strong>Marketing Budget Efficiency:</strong> Pivoting from a "mass product discount" strategy to a "targeted customer discount" approach allows the business to retain high-value customers without requiring additional marketing expenditures.</li>
         <li><strong>Decision-Making Acceleration:</strong> The centralized, clean UI of the dashboard transforms static reporting into a dynamic, real-time strategy simulator.</li>
       </ul>
