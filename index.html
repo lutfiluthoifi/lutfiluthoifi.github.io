@@ -15,12 +15,12 @@
 :root {
   --text-main: #111111;
   --text-secondary: #444444;
-  --text-muted: #777777; /* Slightly darker for better contrast */
+  --text-muted: #777777; 
   --border-color: #eaeaea;
   --accent: #6366f1;
   --accent-light: rgba(99, 102, 241, 0.1);
   --bg-gradient: linear-gradient(180deg, #ffffff, #f8fafc);
-  --card-bg: rgba(255, 255, 255, 0.85); /* Increased opacity from 0.7 for readability */
+  --card-bg: rgba(255, 255, 255, 0.85); 
   --card-bg-hover: rgba(255, 255, 255, 0.95);
   --content-bg: rgba(255, 255, 255, 0.75);
   --skill-bg: rgba(255, 255, 255, 0.85);
@@ -149,15 +149,15 @@ h1 {
   letter-spacing: -0.5px;
 }
 
-/* HEADINGS (UPDATED UI) */
+/* HEADINGS */
 h2 {
   margin-top: 70px;
-  font-size: 20px; /* Increased from 16px */
+  font-size: 20px; 
   color: var(--text-main);
   letter-spacing: 1px;
   font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--accent-light); /* Added border to anchor sections */
+  border-bottom: 2px solid var(--accent-light); 
   padding-bottom: 8px;
   display: inline-block;
   transition: color 0.4s ease;
@@ -187,7 +187,7 @@ h2 {
   padding: 8px 16px;
   border-radius: 30px;
   font-size: 13px;
-  font-weight: 600; /* Bolder for hard skills */
+  font-weight: 600; 
   color: var(--text-main);
   transition: all 0.3s;
 }
@@ -326,7 +326,7 @@ h2 {
 .project-image {
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9; /* Keeps JS height calculation perfect before image loads */
+  aspect-ratio: 16/9; 
   border-radius: 8px;
   margin-bottom: 20px;
   border: 1px solid var(--border-color);
@@ -339,7 +339,7 @@ h2 {
 ul { padding-left: 20px; margin-top: 8px; }
 li { margin-bottom: 6px; color: var(--text-secondary); }
 
-/* PROJECT CTA BUTTONS (UPDATED UI) */
+/* PROJECT CTA BUTTONS */
 .project-actions {
   margin-top: 25px;
   display: flex;
@@ -420,9 +420,9 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
     <div class="project-title-group">
-      <div class="project-title">Delivery Delay Risk & Profitability Analysis</div>
+      <div class="project-title">RevoFin Portfolio Diagnostic: Strategic Credit Risk Analysis</div>
       <div class="project-preview">
-        57.3% deliveries late → ~$914K profit at risk driven by SLA mismatch
+        Diagnosed a 2014 credit crisis ($2.8B portfolio) & built a restructuring engine to prevent cash-flow defaults.
       </div>
     </div>
     <i class="fa-solid fa-chevron-down chevron-icon"></i>
@@ -430,54 +430,51 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
   
   <div class="project-content">
     <div class="content-inner">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=450" alt="Dashboard Preview" class="project-image">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800&h=450" alt="RevoFin Dashboard Preview" class="project-image">
 
       <p><span class="highlight">Business Problem:</span><br>
-      High late delivery rate (57.3%) impacting customer satisfaction and creating significant financial risk.</p>
+      Aggressive portfolio scaling (7x growth) in 2014 triggered a "Risk Inflection Point," causing the repayment success rate (TKB30) to plummet to a historic low of 96.58% and spiking the default rate to 3.40%, threatening the overall health of a $2.8B active portfolio.</p>
       
       <p><span class="highlight">Objective:</span><br>
-      Identify key drivers of delivery delays and provide actionable recommendations to reduce late deliveries by ≥10% within 6 months.</p>
+      Diagnose the root causes of the 2014 credit crisis and design data-driven underwriting pivots to restore portfolio stability and prevent future borrower cash-flow bankruptcies.</p>
       
       <p><span class="highlight">Tools:</span><br>
-      Python, Tableau, Google Slides</p>
+      SQL (BigQuery), Tableau, Google Slides</p>
       
       <p><span class="highlight">What I Did:</span></p>
       <ul>
-        <li>Analyzed supply chain data (orders, shipping, delivery performance)</li>
-        <li>Measured late delivery rate across shipping modes and regions</li>
-        <li>Compared SLA (promised) vs actual delivery performance</li>
-        <li>Quantified financial impact using <b>Profit at Risk</b></li>
-        <li>Built interactive Tableau dashboard for stakeholder insights</li>
+        <li>Extracted, cleansed, and joined over 176K active loan and customer records using advanced SQL queries.</li>
+        <li>Conducted vintage cohort analysis to benchmark historical default volumes and isolate the 2014 anomaly.</li>
+        <li>Profiled borrower demographics against loan structuring parameters to identify risk concentrations.</li>
+        <li>Built an interactive "Cash-Flow Restructuring Engine" in Tableau to simulate the impact of tenor extensions and rate drops on repayment capacity.</li>
       </ul>
       
       <p><span class="highlight">Key Insights:</span></p>
       <ul>
-        <li>57.3% of deliveries were late → systemic operational issue</li>
-        <li>Premium shipping modes (First & Second Class) had the highest delay rates due to unrealistic SLA commitments</li>
-        <li>Standard Class contributed the highest financial risk (~$914K) due to large order volume</li>
-        <li>Delays were consistent across regions and product categories → operational issue, not demand-driven</li>
+        <li>The 2014 crash was driven by a "Killer Combo": deteriorating average borrower income ($74.8K) paired with punitive, automated interest rates (13.7%).</li>
+        <li>Extreme risk concentration: 62.1% of the 2014 exposure volume was locked in highly sensitive "Debt Consolidation" loans, creating a debt spiral.</li>
+        <li>The outdated underwriting model ("Pricing for Risk") was actively forcing borrowers into default by inflating monthly installments to an unmanageable $386.</li>
       </ul>
       
       <p><span class="highlight">Business Impact:</span></p>
       <ul>
-        <li>~$914K profit at risk from late deliveries</li>
-        <li>Increased risk of customer dissatisfaction and SLA failure</li>
-        <li>Operational inefficiencies in fulfillment and capacity planning</li>
+        <li>Successfully isolated the systemic operational flaw driving the highest default rate in company history.</li>
+        <li>Proved mathematically that restructuring (Tenor +12 months, Rate -1%) provides ~$85/month in "breathing room," reducing the installment burden to $300.</li>
+        <li>Provided a clear, simulated roadmap to rescue borrower cash-flow and protect the $2.8B Effective Net Receivables (ENR).</li>
       </ul>
       
       <p><span class="highlight">Recommendations:</span></p>
       <ul>
-        <li>Redesign SLA for premium shipping modes to match operational capacity</li>
-        <li>Prioritize Standard Class improvements for maximum financial impact</li>
-        <li>Optimize warehouse and dispatch processes</li>
-        <li>Implement performance monitoring to reduce delays by ≥10% within 6 months</li>
+        <li>Pivot corporate strategy from "Pricing for Risk" to "Structuring for Success" during high-volatility economic cycles.</li>
+        <li>Implement Dynamic DTI Caps (Hard cap at 30%) specifically for Debt Consolidation segments to prevent over-leveraging.</li>
+        <li>Automate Tenor Extensions at origination for high-risk profiles to ensure sustainable monthly installments and guarantee principal return.</li>
       </ul>
       
       <div class="project-actions">
-        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank" class="btn-cta">
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/financeproject_17772028369400/Dashboard1#2" target="_blank" class="btn-cta">
           <i class="fa-solid fa-chart-simple"></i> View Dashboard
         </a>
-        <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit?slide=id.g4dfce81f19_0_45#slide=id.g4dfce81f19_0_45" target="_blank" class="btn-cta">
+        <a href="https://docs.google.com/presentation/d/1TLKlL6eM9IGwrpMcAU3aziRtfOhmE_JooojgXNv-etA/edit?usp=drive_link" target="_blank" class="btn-cta">
           <i class="fa-solid fa-file-powerpoint"></i> View Presentation
         </a>
       </div>
@@ -653,7 +650,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if(firstProject) {
     firstProject.classList.add("active");
     const content = firstProject.querySelector(".project-content");
-    // setTimeout ensures images format correctly before calculating height
     setTimeout(() => {
       content.style.maxHeight = content.scrollHeight + "px";
     }, 100);
