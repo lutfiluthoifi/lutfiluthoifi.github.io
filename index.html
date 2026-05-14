@@ -7,24 +7,25 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* CSS VARIABLES FOR THEMING */
 :root {
-  --text-main: #111111;
-  --text-secondary: #444444;
-  --text-muted: #777777; 
-  --border-color: #eaeaea;
-  --accent: #6366f1;
-  --accent-light: rgba(99, 102, 241, 0.1);
-  --bg-gradient: linear-gradient(180deg, #ffffff, #f8fafc);
-  --card-bg: rgba(255, 255, 255, 0.85); 
-  --card-bg-hover: rgba(255, 255, 255, 0.95);
-  --content-bg: rgba(255, 255, 255, 0.75);
-  --skill-bg: rgba(255, 255, 255, 0.85);
-  --link-bg: rgba(255, 255, 255, 0.8);
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b; 
+  --border-color: rgba(0, 0, 0, 0.08);
+  --accent: #4f46e5;
+  --accent-glow: rgba(79, 70, 229, 0.4);
+  --accent-light: rgba(79, 70, 229, 0.08);
+  --bg-color: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.6); 
+  --card-bg-hover: rgba(255, 255, 255, 0.9);
+  --content-bg: rgba(255, 255, 255, 0.8);
+  --skill-bg: rgba(255, 255, 255, 0.7);
+  --link-bg: rgba(255, 255, 255, 0.6);
   --chevron-bg: rgba(0, 0, 0, 0.04);
   --profile-border: #ffffff;
 }
@@ -34,225 +35,296 @@
   --text-main: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --border-color: #334155;
+  --border-color: rgba(255, 255, 255, 0.1);
   --accent: #818cf8;
+  --accent-glow: rgba(129, 140, 248, 0.3);
   --accent-light: rgba(129, 140, 248, 0.15);
-  --bg-gradient: linear-gradient(180deg, #0f172a, #020617);
-  --card-bg: rgba(30, 41, 59, 0.85);
-  --card-bg-hover: rgba(30, 41, 59, 0.95);
-  --content-bg: rgba(15, 23, 42, 0.75);
-  --skill-bg: rgba(30, 41, 59, 0.85);
-  --link-bg: rgba(30, 41, 59, 0.8);
+  --bg-color: #020617;
+  --card-bg: rgba(15, 23, 42, 0.5);
+  --card-bg-hover: rgba(30, 41, 59, 0.8);
+  --content-bg: rgba(15, 23, 42, 0.7);
+  --skill-bg: rgba(30, 41, 59, 0.6);
+  --link-bg: rgba(30, 41, 59, 0.5);
   --chevron-bg: rgba(255, 255, 255, 0.05);
-  --profile-border: rgba(30, 41, 59, 0.9);
+  --profile-border: #1e293b;
 }
 
 /* BASE */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   margin: 0;
   color: var(--text-main);
+  background-color: var(--bg-color);
   overflow-x: hidden;
-  background-color: transparent;
-  transition: color 0.4s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* LIVE BACKGROUND CANVAS */
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* LIVE BACKGROUND & CURSOR GLOW */
 #bg-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  pointer-events: none;
-  background: var(--bg-gradient);
-  transition: background 0.4s ease;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -2; pointer-events: none;
 }
-
-/* BACKGROUND GLOW */
-body::before{
-  content: "";
+#cursor-glow {
   position: fixed;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent);
-  top: -100px; right: -100px;
+  top: 0; left: 0;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
   z-index: -1;
-  animation: float 8s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100% {transform: translateY(0)}
-  50% {transform: translateY(30px)}
+  transition: opacity 0.3s ease;
 }
 
 /* THEME TOGGLE BUTTON */
 .theme-toggle {
   position: fixed;
-  top: 25px;
-  right: 25px;
-  width: 45px;
-  height: 45px;
+  top: 25px; right: 25px;
+  width: 50px; height: 50px;
   border-radius: 50%;
   border: 1px solid var(--border-color);
   background: var(--card-bg);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-main);
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 .theme-toggle:hover {
-  transform: translateY(-2px) scale(1.05);
+  transform: translateY(-3px) scale(1.1);
   color: var(--accent);
-  border-color: rgba(99,102,241,0.4);
+  border-color: var(--accent);
+  box-shadow: 0 10px 25px var(--accent-glow);
 }
 
 /* LAYOUT */
 .container {
-  max-width: 880px;
-  margin: 70px auto;
-  padding: 0 20px 70px 20px;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 24px 80px 24px;
   position: relative;
+  z-index: 1;
 }
 
 /* HEADER */
 .header {
   display: flex;
   align-items: center;
-  gap: 25px;
-  animation: fadeUp 0.8s ease;
+  gap: 30px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.profile-container {
+  position: relative;
+}
+.profile-container::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--accent), #ec4899);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: spin 4s linear infinite;
+}
+.profile-container:hover::before {
+  opacity: 1;
 }
 
 .profile-img {
-  width: 115px;
-  height: 115px;
+  width: 120px; height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--profile-border);
-  box-shadow: 0 8px 25px rgba(99,102,241,0.2);
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid var(--profile-border);
+  background-color: var(--card-bg);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.profile-img:hover{
-  transform: scale(1.08) rotate(3deg);
-  box-shadow: 0 12px 35px rgba(99,102,241,0.3);
+.profile-container:hover .profile-img {
+  transform: scale(1.05);
 }
 
 h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: -0.5px;
+  font-size: 42px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--text-main), var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* HEADINGS */
-h2 {
-  margin-top: 70px;
-  font-size: 20px; 
-  color: var(--text-main);
-  letter-spacing: 1px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--accent-light); 
-  padding-bottom: 8px;
+/* TYPING EFFECT */
+.typewriter {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  min-height: 27px;
+  display: flex;
+  align-items: center;
+}
+.cursor {
   display: inline-block;
-  transition: color 0.4s ease;
+  width: 2px;
+  height: 18px;
+  background-color: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
 }
 
 .about {
-  margin-top: 20px;
+  margin-top: 25px;
   color: var(--text-secondary);
-  line-height: 1.7;
-  font-size: 16px;
-  animation: fadeUp 1s ease;
-  transition: color 0.4s ease;
+  line-height: 1.8;
+  font-size: 17px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
 }
 
 /* SKILLS */
 .skills {
-  margin-top: 20px;
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  animation: fadeUp 1.2s ease;
+  gap: 12px;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
 }
 .skills span {
   background: var(--skill-bg);
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(5px);
-  padding: 8px 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 8px 18px;
   border-radius: 30px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600; 
   color: var(--text-main);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
 .skills span:hover {
-  background: var(--accent-light);
-  border-color: rgba(99,102,241,0.3);
-  color: var(--accent);
-  transform: translateY(-2px);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--accent-glow);
 }
 
 /* LINKS */
 .links {
-  margin-top: 25px;
+  margin-top: 35px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  animation: fadeUp 1.4s ease;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  opacity: 0;
 }
 .links a {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
-  color: var(--text-secondary);
-  font-size: 14px;
+  color: var(--text-main);
+  font-size: 15px;
   font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 12px;
+  padding: 12px 22px;
+  border-radius: 14px;
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
   background: var(--link-bg);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 .links a i {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--accent);
+  transition: color 0.3s ease;
+}
+.links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+  background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease;
 }
 .links a:hover {
   background: var(--card-bg-hover);
-  transform: translateY(-3px);
-  border-color: rgba(99,102,241,0.4);
-  box-shadow: 0 4px 15px rgba(99,102,241,0.1);
-  color: var(--accent);
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--accent-light);
+}
+.links a:hover::after {
+  transform: scaleX(1); transform-origin: left;
+}
+
+/* HEADINGS */
+h2 {
+  margin-top: 80px;
+  font-size: 22px; 
+  color: var(--text-main);
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color), transparent);
 }
 
 /* PROJECT CARD */
 .project {
-  margin-top: 25px;
+  margin-top: 30px;
   border: 1px solid var(--border-color);
-  padding: 25px;
-  border-radius: 16px;
+  padding: 28px;
+  border-radius: 20px;
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.03);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
 }
-.project.show{
+.project.show {
   opacity: 1;
   transform: translateY(0);
 }
 .project:hover {
-  border-color: rgba(99,102,241,0.3);
-  box-shadow: 0 10px 30px rgba(99,102,241,0.08);
+  border-color: var(--accent);
+  box-shadow: 0 15px 40px var(--accent-light);
+  transform: translateY(-5px);
 }
 
 /* PROJECT HEADER */
@@ -265,11 +337,12 @@ h2 {
 .project-title-group {
   display: flex;
   flex-direction: column;
+  padding-right: 20px;
 }
 .project-title {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 700;
-  transition: 0.2s;
+  transition: color 0.3s ease;
   color: var(--text-main);
 }
 .project-header:hover .project-title {
@@ -277,19 +350,25 @@ h2 {
 }
 .project-preview {
   color: var(--text-muted);
-  margin-top: 6px;
-  font-size: 14px;
+  margin-top: 8px;
+  font-size: 15px;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 /* CHEVRON ICON */
 .chevron-icon {
   color: var(--text-muted);
-  transition: transform 0.4s ease, color 0.3s ease, background 0.3s ease;
-  font-size: 16px;
-  padding: 10px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 18px;
+  padding: 12px;
   background: var(--chevron-bg);
   border-radius: 50%;
+  min-width: 42px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .project-header:hover .chevron-icon {
   color: var(--accent);
@@ -297,8 +376,9 @@ h2 {
 }
 .project.active .chevron-icon {
   transform: rotate(180deg);
-  color: var(--accent);
-  background: var(--accent-light);
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 4px 15px var(--accent-glow);
 }
 
 /* CONTENT ANIMATION */
@@ -306,20 +386,20 @@ h2 {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
 }
 .project.active .project-content {
   opacity: 1;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .content-inner {
-  padding: 20px;
-  border-radius: 12px;
+  padding: 24px;
+  border-radius: 16px;
   background: var(--content-bg);
   border: 1px solid var(--border-color);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 /* DASHBOARD PREVIEW IMAGE */
@@ -327,61 +407,78 @@ h2 {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9; 
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
   border: 1px solid var(--border-color);
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease;
+}
+.project-image:hover {
+  transform: scale(1.02);
 }
 
 /* TEXT FORMATTING */
-.highlight { font-weight: 700; color: var(--text-main); }
+.highlight { font-weight: 700; color: var(--text-main); display: block; margin-top: 15px;}
 ul { padding-left: 20px; margin-top: 8px; }
-li { margin-bottom: 6px; color: var(--text-secondary); }
+li { margin-bottom: 8px; color: var(--text-secondary); }
 
 /* PROJECT CTA BUTTONS */
 .project-actions {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
-  gap: 12px;
+  gap: 15px;
   flex-wrap: wrap;
 }
 .btn-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
+  gap: 10px;
+  padding: 12px 20px;
   background: var(--accent-light);
   color: var(--accent) !important;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 10px;
+  font-weight: 700;
   text-decoration: none;
   font-size: 14px;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.2);
   transition: all 0.3s ease;
 }
 .btn-cta:hover {
   background: var(--accent);
   color: #ffffff !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--accent-glow);
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(15px);}
-  to{opacity:1; transform:translateY(0);}
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
 
 /* RESPONSIVE */
-@media (max-width: 600px) {
-  .header { flex-direction: column; text-align: center; }
+@media (max-width: 768px) {
+  .header { flex-direction: column; text-align: center; gap: 20px;}
+  .profile-img { width: 100px; height: 100px; }
+  h1 { font-size: 32px; }
+  .typewriter { justify-content: center; }
   .skills, .links { justify-content: center; }
+  .project { padding: 20px; }
+  .project-title { font-size: 18px; }
+  .content-inner { padding: 16px; font-size: 15px; }
 }
 </style>
 </head>
 
 <body>
+<div id="cursor-glow"></div>
 <canvas id="bg-canvas"></canvas>
 
 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
@@ -391,8 +488,16 @@ li { margin-bottom: 6px; color: var(--text-secondary); }
 <div class="container">
 
 <div class="header">
-  <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img">
-  <h1>Lutfi Luthoifi</h1>
+  <div class="profile-container">
+    <!-- Replace src with your actual image path -->
+    <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Lutfi+Luthoifi&background=4f46e5&color=fff&size=120'">
+  </div>
+  <div>
+    <h1>Lutfi Luthoifi</h1>
+    <div class="typewriter">
+      <span id="typewriter-text"></span><span class="cursor"></span>
+    </div>
+  </div>
 </div>
 
 <p class="about">
@@ -409,10 +514,10 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 </div>
 
 <div class="links">
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fa-solid fa-envelope"></i> Email</a>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lutfiluthoifi16@gmail.com&su=Portfolio%20Inquiry" target="_blank"><i class="fa-solid fa-envelope"></i> Email</a>
   <a href="https://wa.me/6281273249943?text=Hi%20Lutfi,%20I%20saw%20your%20portfolio" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
   <a href="https://www.linkedin.com/in/lutfiluthoifi" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-  <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+  <a href="https://docs.google.com/document/d/1blDugYENoYL9zFpVZWyuuREZFQd5nNNeWngPN_rUfnA/export?format=pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
 </div>
 
 <h2>PROJECTS</h2>
@@ -432,50 +537,32 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
     <div class="content-inner">
       <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=450" alt="RevoFin Dashboard Preview" class="project-image">
 
-      <p><span class="highlight">Business Problem:</span><br>
-      Aggressive portfolio scaling (7x growth) in 2014 triggered a "Risk Inflection Point," causing the repayment success rate (TKB30) to plummet to a historic low of 96.58% and spiking the default rate to 3.40%, threatening the overall health of a $2.8B active portfolio.</p>
+      <span class="highlight">Business Problem:</span>
+      <p>Aggressive portfolio scaling (7x growth) in 2014 triggered a "Risk Inflection Point," causing the repayment success rate (TKB30) to plummet to a historic low of 96.58% and spiking the default rate to 3.40%, threatening the overall health of a $2.8B active portfolio.</p>
       
-      <p><span class="highlight">Objective:</span><br>
-      Diagnose the root causes of the 2014 credit crisis and design data-driven underwriting pivots to restore portfolio stability and prevent future borrower cash-flow bankruptcies.</p>
+      <span class="highlight">Objective & Tools:</span>
+      <p>Diagnose root causes of the crisis and design data-driven underwriting pivots. Built using <b>SQL (BigQuery), Tableau, and Google Slides</b>.</p>
       
-      <p><span class="highlight">Tools:</span><br>
-      SQL (BigQuery), Tableau, Google Slides</p>
-      
-      <p><span class="highlight">What I Did:</span></p>
+      <span class="highlight">What I Did:</span>
       <ul>
-        <li>Extracted, cleansed, and joined over 176K active loan and customer records using advanced SQL queries.</li>
-        <li>Conducted vintage cohort analysis to benchmark historical default volumes and isolate the 2014 anomaly.</li>
-        <li>Profiled borrower demographics against loan structuring parameters to identify risk concentrations.</li>
-        <li>Built an interactive "Cash-Flow Restructuring Engine" in Tableau to simulate the impact of tenor extensions and rate drops on repayment capacity.</li>
+        <li>Extracted, cleansed, and joined over 176K active loan and customer records using advanced SQL.</li>
+        <li>Conducted vintage cohort analysis to benchmark historical default volumes and isolate anomalies.</li>
+        <li>Built an interactive "Cash-Flow Restructuring Engine" in Tableau to simulate impact of tenor extensions.</li>
       </ul>
       
-      <p><span class="highlight">Key Insights:</span></p>
+      <span class="highlight">Key Insights & Impact:</span>
       <ul>
-        <li>The 2014 crash was driven by a "Killer Combo": deteriorating average borrower income ($74.8K) paired with punitive, automated interest rates (13.7%).</li>
-        <li>Extreme risk concentration: 62.1% of the 2014 exposure volume was locked in highly sensitive "Debt Consolidation" loans, creating a debt spiral.</li>
-        <li>The outdated underwriting model ("Pricing for Risk") was actively forcing borrowers into default by inflating monthly installments to an unmanageable $386.</li>
-      </ul>
-      
-      <p><span class="highlight">Business Impact:</span></p>
-      <ul>
-        <li>Successfully isolated the systemic operational flaw driving the highest default rate in company history.</li>
-        <li>Proved mathematically that restructuring (Tenor +12 months, Rate -1%) provides ~$85/month in "breathing room," reducing the installment burden to $300.</li>
-        <li>Provided a clear, simulated roadmap to rescue borrower cash-flow and protect the $2.8B Effective Net Receivables (ENR).</li>
-      </ul>
-      
-      <p><span class="highlight">Recommendations:</span></p>
-      <ul>
-        <li>Pivot corporate strategy from "Pricing for Risk" to "Structuring for Success" during high-volatility economic cycles.</li>
-        <li>Implement Dynamic DTI Caps (Hard cap at 30%) specifically for Debt Consolidation segments to prevent over-leveraging.</li>
-        <li>Automate Tenor Extensions at origination for high-risk profiles to ensure sustainable monthly installments and guarantee principal return.</li>
+        <li>Discovered a "Killer Combo": deteriorating average income paired with automated 13.7% interest rates.</li>
+        <li>62.1% of exposure volume was locked in highly sensitive "Debt Consolidation" loans.</li>
+        <li>Successfully proved that restructuring (Tenor +12m, Rate -1%) provides ~$85/month in "breathing room", rescuing borrower cash-flow.</li>
       </ul>
       
       <div class="project-actions">
         <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/financeproject_17772028369400/Dashboard1#2" target="_blank" class="btn-cta">
-          <i class="fa-solid fa-chart-simple"></i> View Dashboard
+          <i class="fa-solid fa-chart-line"></i> View Dashboard
         </a>
         <a href="https://docs.google.com/presentation/d/1TLKlL6eM9IGwrpMcAU3aziRtfOhmE_JooojgXNv-etA/edit?usp=drive_link" target="_blank" class="btn-cta">
-          <i class="fa-solid fa-file-powerpoint"></i> View Presentation
+          <i class="fa-solid fa-desktop"></i> View Presentation
         </a>
       </div>
     </div>
@@ -487,7 +574,7 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
     <div class="project-title-group">
       <div class="project-title">Delivery Delay Risk & Profitability Analysis</div>
       <div class="project-preview">
-        57.3% deliveries late → ~$914K profit at risk driven by SLA mismatch.
+        57.3% deliveries late → ~$914K profit at risk driven by SLA mismatch. Identified fulfillment bottlenecks.
       </div>
     </div>
     <i class="fa-solid fa-chevron-down chevron-icon"></i>
@@ -495,55 +582,31 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
   
   <div class="project-content">
     <div class="content-inner">
-      <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c663be?auto=format&fit=crop&q=80&w=800&h=450" alt="Supply Chain Dashboard Preview" class="project-image">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c663be?auto=format&fit=crop&q=80&w=800&h=450" alt="Supply Chain Dashboard" class="project-image">
 
-      <p><span class="highlight">Business Problem:</span><br>
-      High late delivery rate (57.3%) impacting customer satisfaction and creating significant financial risk.</p>
+      <span class="highlight">Business Problem:</span>
+      <p>High late delivery rate (57.3%) impacting customer satisfaction and creating massive financial liability.</p>
       
-      <p><span class="highlight">Objective:</span><br>
-      Identify key drivers of delivery delays and provide actionable recommendations to reduce late deliveries by ≥10% within 6 months.</p>
-      
-      <p><span class="highlight">Tools:</span><br>
-      Python, Tableau, Google Slides</p>
-      
-      <p><span class="highlight">What I Did:</span></p>
+      <span class="highlight">What I Did (Python & Tableau):</span>
       <ul>
-        <li>Analyzed supply chain data (orders, shipping, delivery performance)</li>
-        <li>Measured late delivery rate across shipping modes and regions</li>
-        <li>Compared SLA (promised) vs actual delivery performance</li>
-        <li>Quantified financial impact using <b>Profit at Risk</b></li>
-        <li>Built interactive Tableau dashboard for stakeholder insights</li>
+        <li>Analyzed supply chain datasets to measure delay rates across shipping modes and regions.</li>
+        <li>Quantified financial impact by building a <b>Profit at Risk</b> framework.</li>
+        <li>Developed an interactive Tableau dashboard for executive stakeholder tracking.</li>
       </ul>
       
-      <p><span class="highlight">Key Insights:</span></p>
+      <span class="highlight">Key Insights & Impact:</span>
       <ul>
-        <li>57.3% of deliveries were late → systemic operational issue</li>
-        <li>Premium shipping modes (First & Second Class) had the highest delay rates due to unrealistic SLA commitments</li>
-        <li>Standard Class contributed the highest financial risk (~$914K) due to large order volume</li>
-        <li>Delays were consistent across regions and product categories → operational issue, not demand-driven</li>
-      </ul>
-      
-      <p><span class="highlight">Business Impact:</span></p>
-      <ul>
-        <li>~$914K profit at risk from late deliveries</li>
-        <li>Increased risk of customer dissatisfaction and SLA failure</li>
-        <li>Operational inefficiencies in fulfillment and capacity planning</li>
-      </ul>
-      
-      <p><span class="highlight">Recommendations:</span></p>
-      <ul>
-        <li>Redesign SLA for premium shipping modes to match operational capacity</li>
-        <li>Prioritize Standard Class improvements for maximum financial impact</li>
-        <li>Optimize warehouse and dispatch processes</li>
-        <li>Implement performance monitoring to reduce delays by ≥10% within 6 months</li>
+        <li>Standard Class contributed the highest financial risk (~$914K) due to massive order volume.</li>
+        <li>Delays were consistent across regions → operational fulfillment issue, not demand-driven.</li>
+        <li>Recommended redesigning SLA commitments and optimizing warehouse dispatch to cut delays by ≥10%.</li>
       </ul>
       
       <div class="project-actions">
         <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/DEEPP1_17699608370300/Dashboard1" target="_blank" class="btn-cta">
-          <i class="fa-solid fa-chart-simple"></i> View Dashboard
+          <i class="fa-solid fa-chart-line"></i> View Dashboard
         </a>
-        <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU/edit?slide=id.g4dfce81f19_0_45#slide=id.g4dfce81f19_0_45" target="_blank" class="btn-cta">
-          <i class="fa-solid fa-file-powerpoint"></i> View Presentation
+        <a href="https://docs.google.com/presentation/d/1qX4dyMFNqyzhu_jJpqwkHygidsk6YuSw6b-GFEucSsU" target="_blank" class="btn-cta">
+          <i class="fa-solid fa-desktop"></i> View Presentation
         </a>
       </div>
     </div>
@@ -553,9 +616,9 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
     <div class="project-title-group">
-      <div class="project-title">Superstore Profitability Turnaround: Discount Strategy & RFM Segmentation</div>
+      <div class="project-title">Superstore Profitability Turnaround</div>
       <div class="project-preview">
-        Executive dashboard simulating discount caps & rescuing 'At Risk' VIP customers.
+        Executive dashboard simulating discount caps & rescuing 'At Risk' VIP customers using RFM.
       </div>
     </div>
     <i class="fa-solid fa-chevron-down chevron-icon"></i>
@@ -565,48 +628,30 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
     <div class="content-inner">
       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=450" alt="Superstore Dashboard Preview" class="project-image">
 
-      <p><span class="highlight">The Business Problem:</span><br>
-      Superstore generates a substantial volume of Sales, yet preliminary Exploratory Data Analysis (EDA) revealed inconsistent profitability across product lines. While top-line revenue appears healthy, uncontrolled discounting strategies have created hidden "profit leaks" that actively drain the company's overall earnings.</p>
-      
-      <p><span class="highlight">The Objective:</span><br>
-      To diagnose the root causes of financial losses at both the product and customer levels, and to design an interactive executive dashboard that enables management to simulate new pricing policies and restore profitability.</p>
-      
-      <p><span class="highlight">Tech Stack:</span><br>
-      Python (Pandas, RFM Modeling), Tableau (Geospatial Mapping, What-If Parameters, UI/UX Design)</p>
-      
-      <p><span class="highlight">The Process (What I Did):</span></p>
+      <span class="highlight">The Process & Tech Stack:</span>
+      <p>Python (Pandas, RFM Modeling) and Tableau (Geospatial Mapping, What-If Parameters).</p>
       <ul>
-        <li><strong>Data Engineering (Python):</strong> Preprocessed historical transaction data and performed feature engineering to structure the dataset for deep-dive analysis, intentionally retaining business outliers (e.g., extreme discounts) to accurately capture profit leaks.</li>
-        <li><strong>Customer Segmentation (Python):</strong> Built an RFM (Recency, Frequency, Monetary) model to cluster the customer base into critical business segments (e.g., Champions, At Risk Big Spenders).</li>
-        <li><strong>Interactive Simulation (Tableau):</strong> Developed a Dark Mode executive dashboard featuring a <em>What-If Parameter</em> to simulate the financial impact of capping discounts.</li>
-        <li><strong>UI/UX Optimization:</strong> Implemented <em>Viz-in-Tooltip</em> geospatial mapping to maintain a clean, high data-ink ratio and minimize cognitive load.</li>
+        <li>Built an <b>RFM (Recency, Frequency, Monetary)</b> model in Python to segment customers.</li>
+        <li>Developed a simulation dashboard featuring a <i>What-If Parameter</i> to test discount cap scenarios.</li>
       </ul>
       
-      <p><span class="highlight">Key Insights & Recommendations:</span></p>
+      <span class="highlight">Key Insights & Business Impact:</span>
       <ul>
-        <li><strong>The Illusion of Volume (Opportunity Loss):</strong> While categories like <em>Machines</em> and <em>Binders</em> remain profitable on the surface, excessive discounting causes massive "invisible" profit leaks, leaving tens of thousands of dollars in <strong>unrealized margins</strong>.</li>
-        <li><strong>The Active Profit Killers:</strong> The <em>Tables</em> category is actively draining overall earnings, acting as the primary driver of direct financial loss due to an aggressive discount strategy averaging above 20%.</li>
-        <li><strong>Optimal Discount Policy:</strong> The <em>What-If Simulation</em> proves that enforcing a strict 20% maximum discount cap serves a dual purpose: it rescues currently unprofitable products (Tables) back to breakeven, while simultaneously maximizing unrealized profit on high-ticket items.</li>
-        <li><strong>Rescuing VIP Clients:</strong> Segmentation analysis identified a critical group of <em>At Risk (Big Spenders)</em> who are on the verge of churning. Blanket discount budgets should be strategically reallocated into targeted <em>Win-Back Campaigns</em> exclusively for this high-value cohort.</li>
-      </ul>
-      
-      <p><span class="highlight">Projected Business Impact:</span></p>
-      <ul>
-        <li><strong>Margin Maximization & Profit Recovery:</strong> By simulating a 20% discount cap, the company is projected to not only stop 100% of the active profit bleed within the <em>Tables</em> category but also unlock significant trapped revenue across historically over-discounted items.</li>
-        <li><strong>Marketing Budget Efficiency:</strong> Pivoting from a "mass product discount" strategy to a "targeted customer discount" approach allows the business to retain high-value customers without requiring additional marketing expenditures.</li>
-        <li><strong>Decision-Making Acceleration:</strong> The centralized, clean UI of the dashboard transforms static reporting into a dynamic, real-time strategy simulator.</li>
+        <li>Identified that the <i>Tables</i> category was the primary profit killer due to >20% average discounts.</li>
+        <li>Proved mathematically that a strict 20% discount cap stops 100% of the active profit bleed.</li>
+        <li>Reallocated broad discount budgets into targeted "Win-Back" campaigns for at-risk high-ticket clients.</li>
       </ul>
       
       <div class="project-actions">
         <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/SuperStore_17751203732730/Dashboard1" target="_blank" class="btn-cta">
-          <i class="fa-solid fa-chart-simple"></i> View Dashboard
+          <i class="fa-solid fa-chart-line"></i> View Dashboard
         </a>
       </div>
     </div>
   </div>
 </div>
 
-<h2>EXPERIENCE</h2>
+<h2>EXPERIENCE & EDUCATION</h2>
 
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
@@ -646,18 +691,17 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
   </div>
 </div>
 
-<h2>EDUCATION</h2>
-
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
     <div class="project-title-group">
       <div class="project-title">RevoU — Full Stack Data Analytics</div>
-      <div class="project-preview">Oct 2025 – Feb 2026</div> </div>
+      <div class="project-preview">Oct 2025 – Feb 2026</div> 
+    </div>
     <i class="fa-solid fa-chevron-down chevron-icon"></i>
   </div>
   <div class="project-content">
     <div class="content-inner">
-      <p style="margin:0;">Completed hands-on training focused on solving business problems with analytical solutions, applying statistical concepts, and using diverse tools such as Google Sheets, SQL, Python, and Tableau to generate meaningful insights.</p>
+      <p style="margin:0;">Completed intensive hands-on training focused on solving real-world business problems using Google Sheets, SQL, Python, and Tableau to engineer data and generate actionable insights.</p>
     </div>
   </div>
 </div>
@@ -674,6 +718,35 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 </div>
 
 <script>
+// --- TYPEWRITER EFFECT ---
+const textArray = ["Data Analyst", "SQL Developer", "Python Enthusiast", "Tableau Specialist"];
+let textIndex = 0;
+let charIndex = 0;
+const typeTarget = document.getElementById("typewriter-text");
+
+function type() {
+  if (charIndex < textArray[textIndex].length) {
+    typeTarget.textContent += textArray[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, 100);
+  } else {
+    setTimeout(erase, 2000);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    typeTarget.textContent = textArray[textIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, 50);
+  } else {
+    textIndex++;
+    if (textIndex >= textArray.length) textIndex = 0;
+    setTimeout(type, 500);
+  }
+}
+document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
+
 // --- DARK MODE LOGIC ---
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
@@ -686,8 +759,7 @@ if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
 }
 
 themeToggle.addEventListener('click', () => {
-  const currentTheme = document.body.getAttribute('data-theme');
-  if (currentTheme === 'dark') {
+  if (document.body.getAttribute('data-theme') === 'dark') {
     document.body.removeAttribute('data-theme');
     localStorage.setItem('theme', 'light');
     themeIcon.classList.replace('fa-sun', 'fa-moon');
@@ -698,7 +770,7 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
-// --- BULLETPROOF ACCORDION LOGIC ---
+// --- ACCORDION LOGIC ---
 function toggleProject(element) {
   const projectContainer = element.parentElement;
   const content = projectContainer.querySelector('.project-content');
@@ -707,8 +779,13 @@ function toggleProject(element) {
     projectContainer.classList.remove("active");
     content.style.maxHeight = null; 
   } else {
+    // Optional: Close others
+    // document.querySelectorAll('.project.active').forEach(p => {
+    //   p.classList.remove('active');
+    //   p.querySelector('.project-content').style.maxHeight = null;
+    // });
     projectContainer.classList.add("active");
-    content.style.maxHeight = content.scrollHeight + "px";
+    content.style.maxHeight = content.scrollHeight + 40 + "px"; // added buffer
   }
 }
 
@@ -719,35 +796,47 @@ document.addEventListener("DOMContentLoaded", () => {
     firstProject.classList.add("active");
     const content = firstProject.querySelector(".project-content");
     setTimeout(() => {
-      content.style.maxHeight = content.scrollHeight + "px";
+      content.style.maxHeight = content.scrollHeight + 40 + "px";
     }, 100);
   }
 });
 
-// Recalculate heights if the user resizes the window
 window.addEventListener('resize', () => {
   document.querySelectorAll('.project.active .project-content').forEach(content => {
-    content.style.maxHeight = content.scrollHeight + "px";
+    content.style.maxHeight = content.scrollHeight + 40 + "px";
   });
 });
 
 // --- SCROLL ANIMATIONS ---
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add("show");
     }
   });
-});
-document.querySelectorAll(".project").forEach(el=>{
-  observer.observe(el);
-});
+}, { threshold: 0.1 });
 
-// --- LIVE BACKGROUND PARTICLE SYSTEM ---
+document.querySelectorAll(".project").forEach(el => observer.observe(el));
+
+// --- CURSOR GLOW & INTERACTIVE PARTICLES ---
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
+const cursorGlow = document.getElementById('cursor-glow');
 let width, height;
 let particles = [];
+let mouse = { x: null, y: null };
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+  cursorGlow.style.left = e.x + 'px';
+  cursorGlow.style.top = e.y + 'px';
+});
+
+window.addEventListener('mouseout', () => {
+  mouse.x = null;
+  mouse.y = null;
+});
 
 function resize() {
   width = canvas.width = window.innerWidth;
@@ -760,28 +849,44 @@ class Particle {
   constructor() {
     this.x = Math.random() * width;
     this.y = Math.random() * height;
-    this.vx = (Math.random() - 0.5) * 0.6; 
-    this.vy = (Math.random() - 0.5) * 0.6; 
-    this.radius = Math.random() * 1.5 + 0.5;
+    this.vx = (Math.random() - 0.5) * 0.8; 
+    this.vy = (Math.random() - 0.5) * 0.8; 
+    this.radius = Math.random() * 2 + 1;
+    this.baseRadius = this.radius;
   }
   update() {
     this.x += this.vx;
     this.y += this.vy;
+    
+    // Bounce off edges
     if (this.x < 0 || this.x > width) this.vx *= -1;
     if (this.y < 0 || this.y > height) this.vy *= -1;
+
+    // Mouse interaction (Connect and slightly repulse)
+    if (mouse.x != null) {
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 120) {
+        this.radius = this.baseRadius * 2;
+      } else {
+        this.radius = this.baseRadius;
+      }
+    }
   }
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(99, 102, 241, 0.3)'; 
+    // Use the accent color dynamically via JS or hardcode the RGB
+    ctx.fillStyle = document.body.getAttribute('data-theme') === 'dark' ? 'rgba(129, 140, 248, 0.4)' : 'rgba(79, 70, 229, 0.3)'; 
     ctx.fill();
   }
 }
 
 function initParticles() {
   particles = [];
-  let particleCount = Math.floor((width * height) / 16000); 
-  if (particleCount > 80) particleCount = 80; 
+  let particleCount = Math.floor((width * height) / 12000); 
+  if (particleCount > 100) particleCount = 100; 
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
   }
@@ -796,19 +901,39 @@ function animate() {
     p.draw();
   });
   
+  // Draw lines between close particles
+  let isDark = document.body.getAttribute('data-theme') === 'dark';
+  let lineRGB = isDark ? '129, 140, 248' : '79, 70, 229';
+
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
       
-      if (distance < 140) {
+      if (distance < 150) {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        const opacity = 1 - (distance / 140);
-        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.2})`; 
-        ctx.lineWidth = 0.8;
+        const opacity = 1 - (distance / 150);
+        ctx.strokeStyle = `rgba(${lineRGB}, ${opacity * 0.25})`; 
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+    
+    // Draw lines to mouse
+    if (mouse.x != null) {
+      const dxMouse = particles[i].x - mouse.x;
+      const dyMouse = particles[i].y - mouse.y;
+      const distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+      if (distanceMouse < 150) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        const opacityMouse = 1 - (distanceMouse / 150);
+        ctx.strokeStyle = `rgba(${lineRGB}, ${opacityMouse * 0.4})`;
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
     }
