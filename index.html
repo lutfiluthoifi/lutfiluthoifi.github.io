@@ -489,7 +489,6 @@ li { margin-bottom: 8px; color: var(--text-secondary); }
 
 <div class="header">
   <div class="profile-container">
-    <!-- Replace src with your actual image path -->
     <img src="Foto-removebg-preview.png" alt="Profile" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Lutfi+Luthoifi&background=4f46e5&color=fff&size=120'">
   </div>
   <div>
@@ -521,6 +520,54 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 </div>
 
 <h2>PROJECTS</h2>
+
+<div class="project">
+  <div class="project-header" onclick="toggleProject(this)">
+    <div class="project-title-group">
+      <div class="project-title">OCA Blast Strategic Audit: Revenue Protection & Portfolio Risk Mitigation</div>
+      <div class="project-preview">
+        Diagnosed a silent cash leak, high portfolio vulnerability (60% revenue in 3 clients), and critical email bounce rates threatening IP blacklisting.
+      </div>
+    </div>
+    <i class="fa-solid fa-chevron-down chevron-icon"></i>
+  </div>
+  
+  <div class="project-content">
+    <div class="content-inner">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800&h=450" alt="OCA Blast Audit Dashboard Preview" class="project-image">
+
+      <span class="highlight">Business Problem:</span>
+      <p>OCA faced a silent cash leak. A systemic bug caused a discrepancy between gross volume and true billable revenue. At the same time, the portfolio was highly vulnerable. Just three clients controlled 60% of total revenue. Furthermore, email bounce rates from specific enterprise accounts exceeded the 2% safety limit, threatening a global IP blacklist on Amazon Pinpoint.</p>
+      
+      <span class="highlight">Objective & Tools:</span>
+      <p>Diagnose root causes of revenue leakage, monitor infrastructure health, and design a strategic mitigation roadmap. Built using <b>Python (Data Processing), Tableau (Dashboarding), and Google Slides</b>.</p>
+      
+      <span class="highlight">What I Did:</span>
+      <ul>
+        <li>Extracted, cleansed, and consolidated over 122,000 transaction records across 4 channels (WhatsApp, Email, SMS, and Voice Call).</li>
+        <li>Conducted a row-level audit to normalize data anomalies and reconcile delivery status against billing logic.</li>
+        <li>Built an interactive Early Warning System (EWS) in Tableau to monitor real-time traffic drops, channel efficiency, and IP bounce alerts.</li>
+      </ul>
+      
+      <span class="highlight">Key Insights & Impact:</span>
+      <ul>
+        <li>Discovered a critical "Billing Bug". The system failed to charge for 'Clicked' emails, causing direct revenue leakage on the highest-performing campaigns.</li>
+        <li>Uncovered a "Pricing Paradox". WhatsApp drove 2.5x more volume than SMS, but SMS generated the highest profit margin, exposing a severe cannibalization risk.</li>
+        <li>Identified extreme inefficiency in Voice Calls, with a 77.5% Ring No Answer (RNA) rate wasting server resources.</li>
+        <li>Delivered a prioritized 6-month roadmap to fix billing logic, acquire mid-tier clients, and reposition SMS as a Premium OTP channel.</li>
+      </ul>
+      
+      <div class="project-actions">
+        <a href="https://public.tableau.com/app/profile/lutfi.luthoifi/viz/OcaProject/Dashboard1" target="_blank" class="btn-cta">
+          <i class="fa-solid fa-chart-line"></i> View Dashboard
+        </a>
+        <a href="https://docs.google.com/presentation/d/1STrXvk7H_5XJRPY3YY8l9uFD6PyKxM9A/edit?usp=sharing&ouid=113182415142613247086&rtpof=true&sd=true" target="_blank" class="btn-cta">
+          <i class="fa-solid fa-desktop"></i> View Presentation
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
@@ -692,7 +739,7 @@ Data Analyst skilled in SQL, Python, and Tableau. I turn complex data into actio
 </div>
 
 <h2>EDUCATION</h2>
-
+  
 <div class="project">
   <div class="project-header" onclick="toggleProject(this)">
     <div class="project-title-group">
@@ -781,13 +828,8 @@ function toggleProject(element) {
     projectContainer.classList.remove("active");
     content.style.maxHeight = null; 
   } else {
-    // Optional: Close others
-    // document.querySelectorAll('.project.active').forEach(p => {
-    //   p.classList.remove('active');
-    //   p.querySelector('.project-content').style.maxHeight = null;
-    // });
     projectContainer.classList.add("active");
-    content.style.maxHeight = content.scrollHeight + 40 + "px"; // added buffer
+    content.style.maxHeight = content.scrollHeight + 40 + "px"; 
   }
 }
 
@@ -879,7 +921,6 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    // Use the accent color dynamically via JS or hardcode the RGB
     ctx.fillStyle = document.body.getAttribute('data-theme') === 'dark' ? 'rgba(129, 140, 248, 0.4)' : 'rgba(79, 70, 229, 0.3)'; 
     ctx.fill();
   }
@@ -903,7 +944,6 @@ function animate() {
     p.draw();
   });
   
-  // Draw lines between close particles
   let isDark = document.body.getAttribute('data-theme') === 'dark';
   let lineRGB = isDark ? '129, 140, 248' : '79, 70, 229';
 
@@ -924,7 +964,6 @@ function animate() {
       }
     }
     
-    // Draw lines to mouse
     if (mouse.x != null) {
       const dxMouse = particles[i].x - mouse.x;
       const dyMouse = particles[i].y - mouse.y;
